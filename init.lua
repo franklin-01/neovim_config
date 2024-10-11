@@ -1,10 +1,13 @@
-require("user.config.plugin-stack")
-require("user.config.keymap")
-require("user.config.options")
 require("user.config.autocmds")
+require("user.config.options")
+require("user.config.keymap")
+require("user.config.plugin-stack")
 
 -- colorscheme
 spec("user.config.colorscheme")
+
+-- lsp config
+spec("user.config.lsp")
 
 -- plugins
 spec("user.plugins.dev-icons")
@@ -13,9 +16,9 @@ spec("user.plugins.mason")
 --------------------------------
 spec("user.plugins.which-key")
 --------------------------------
-spec("user.plugins.schemastore")
 spec("user.plugins.nvim-tree")
 spec("user.plugins.telescope")
+spec("user.plugins.schemastore")
 spec("user.plugins.cmp")
 spec("user.plugins.comment")
 spec("user.plugins.lua-line")
@@ -38,9 +41,6 @@ spec("user.plugins.zen-mode")
 spec("user.plugins.auto-tag")
 spec("user.plugins.rainbow-delimiter")
 spec("user.plugins.blamer")
-
--- lsp config
-spec("user.config.lsp")
 
 -- extras
 spec("user.extra.tabby")

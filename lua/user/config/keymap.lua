@@ -76,6 +76,8 @@ local defaults = {
 
 		-- save file
 		["<leader>w"] = ":w<CR>",
+
+		["<C-CR>"] = "o",
 	},
 
 	term_mode = {

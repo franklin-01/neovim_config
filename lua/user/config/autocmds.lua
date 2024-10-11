@@ -1,3 +1,25 @@
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+	callback = function(data)
+		-- Verifica se o arquivo é um diretório
+		local directory = vim.fn.isdirectory(data.file) == 1
+
+		if not directory then
+			return
+		end
+
+		-- Altera o diretório atual para o passado como argumento
+		vim.cmd.cd(data.file)
+
+		-- Abre o NvimTree
+		require("nvim-tree.api").tree.open()
+
+		-- Fecha o buffer padrão que abre junto
+		if #vim.api.nvim_list_bufs() == 2 then
+			vim.cmd("bdelete " .. 1)
+		end
+	end,
+})
+
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 	callback = function()
 		vim.cmd("set formatoptions-=cro")
