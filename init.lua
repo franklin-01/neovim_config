@@ -34,7 +34,6 @@ spec("user.plugins.toggle-term")
 spec("user.plugins.fidget")
 spec("user.plugins.highlight-colors")
 spec("user.plugins.dressing")
-spec("user.plugins.modificator")
 spec("user.plugins.nav-buddy")
 spec("user.plugins.project")
 spec("user.plugins.zen-mode")
@@ -50,5 +49,6 @@ spec("user.extra.alpha")
 
 -- formatters, linters
 spec("user.plugins.none-ls")
+
 -- lazy
 require("user.config.lazy")

@@ -16,7 +16,7 @@ function M.config()
 		--"stylua",
 		-- bash
 		"bashls",
-		-- js, ts, json, html, css
+		-- js, ts, html, css
 		"ts_ls",
 		"biome",
 		"html",
@@ -35,6 +35,8 @@ function M.config()
 		"rnix",
 		-- yaml
 		"yamlls",
+		-- json
+		"jsonls",
 	}
 
 	require("mason").setup({
