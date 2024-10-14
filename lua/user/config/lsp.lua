@@ -67,7 +67,7 @@ function M.config()
 		"bashls",
 		-- "ts_ls",
 		"biome",
-		"cssls",
+		-- "cssls",
 		"gopls",
 		"html",
 		"lua_ls",
@@ -143,6 +143,16 @@ function M.config()
 			-- disable tsserver formatter
 			client.server_capabilities.documentFormattingProvider = false
 		end,
+		capabilities = M.common_capabilities(),
+	})
+
+	lspconfig.cssls.setup({
+		on_attach = function(client, bufnr)
+			lsp_keymaps(bufnr)
+			-- disable tsserver formatter
+			client.server_capabilities.documentFormattingProvider = false
+		end,
+		capabilities = M.common_capabilities(),
 	})
 end
 
