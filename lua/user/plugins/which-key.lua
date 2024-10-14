@@ -10,7 +10,6 @@ function M.config()
 	local wk = require("which-key")
 
 	wk.add({
-		{ "<leader>;", "<cmd>tabnew | terminal<CR>", desc = "Term" },
 		{ "<leader>T", group = "Treesitter" },
 		{ "<leader>a", group = "Tab" },
 		{ "<leader>aN", "<cmd>tabnew %<cr>", desc = "New Tab" },
@@ -32,10 +31,16 @@ function M.config()
 				vim.lsp.buf.format({ async = false })
 				vim.api.nvim_command("w")
 			end,
-			desc = "Save file",
+			desc = "Save and format",
 		},
-		{ "<leader>t", group = "Test" },
-		{ "<leader>v", "<cmd>vsplit<CR>", desc = "Split" },
+		{
+			"<leader>W",
+			function()
+				vim.lsp.buf.format({ async = false })
+				vim.api.nvim_command("w")
+			end,
+			desc = "Save",
+		},
 	})
 
 	wk.setup({

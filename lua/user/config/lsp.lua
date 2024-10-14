@@ -65,7 +65,7 @@ function M.config()
 
 	local servers = {
 		"bashls",
-		"ts_ls",
+		-- "ts_ls",
 		"biome",
 		"cssls",
 		"gopls",
@@ -106,10 +106,11 @@ function M.config()
 		},
 	}
 
-	vim.diagnostic.config(default_diagnostic_config)
-
-	for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
-		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
+	local diag_config = vim.diagnostic.config(default_diagnostic_config)
+	if diag_config then
+		for _, sign in ipairs(vim.tbl_get(diag_config, "signs", "values") or {}) do
+			vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
+		end
 	end
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
@@ -134,6 +135,15 @@ function M.config()
 
 		lspconfig[server].setup(opts)
 	end
+
+	-- manual config
+	lspconfig.ts_ls.setup({
+		on_attach = function(client, bufnr)
+			lsp_keymaps(bufnr)
+			-- disable tsserver formatter
+			client.server_capabilities.documentFormattingProvider = false
+		end,
+	})
 end
 
 return M
