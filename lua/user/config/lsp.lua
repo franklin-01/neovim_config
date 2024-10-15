@@ -73,7 +73,7 @@ function M.config()
 		"lua_ls",
 		"pyright",
 		"tailwindcss",
-		"rust_analyzer",
+		-- "rust_analyzer",
 		"clangd",
 		"dockerls",
 		"docker_compose_language_service",

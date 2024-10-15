@@ -8,12 +8,12 @@ local M = {
 function M.config()
 	local servers = {
 		-- python
-		--"black",
+		-- "black",
 		"pyright",
 		--"flake8",
 		-- lua
 		"lua_ls",
-		--"stylua",
+		-- "stylua",
 		-- bash
 		"bashls",
 		-- js, ts, html, css
@@ -25,7 +25,7 @@ function M.config()
 		-- go
 		"gopls",
 		-- rust
-		"rust_analyzer",
+		-- "rust_analyzer",
 		-- c, c++
 		"clangd",
 		-- docker, docker-compose
