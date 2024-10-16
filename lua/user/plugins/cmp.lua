@@ -44,8 +44,6 @@ function M.config()
 	local luasnip = require("luasnip")
 	require("luasnip/loaders/from_vscode").lazy_load()
 
-	vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
-	vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
 	vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
 
 	local check_backspace = function()
@@ -135,10 +133,8 @@ function M.config()
 			end,
 		},
 		sources = {
-			{ name = "copilot" },
 			{ name = "nvim_lsp" },
 			{ name = "luasnip" },
-			{ name = "cmp_tabnine" },
 			{ name = "nvim_lua" },
 			{ name = "buffer" },
 			{ name = "path" },
@@ -152,14 +148,15 @@ function M.config()
 		window = {
 			completion = {
 				border = "rounded",
-				scrollbar = false,
+				scrollbar = true,
 			},
 			documentation = {
 				border = "rounded",
+				scrollbar = true,
 			},
 		},
 		experimental = {
-			ghost_text = false,
+			ghost_text = true,
 		},
 	})
 end
