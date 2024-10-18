@@ -134,11 +134,11 @@ function M.config()
 		},
 		sources = {
 			{ name = "nvim_lsp" },
-			{ name = "luasnip" },
-			{ name = "nvim_lua" },
-			{ name = "buffer" },
+			-- { name = "luasnip" },
+			-- { name = "nvim_lua" },
+			-- { name = "buffer" },
 			{ name = "path" },
-			{ name = "calc" },
+			-- { name = "calc" },
 			{ name = "emoji" },
 		},
 		confirm_opts = {
