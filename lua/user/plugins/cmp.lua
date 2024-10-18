@@ -36,6 +36,9 @@ local M = {
 		{
 			"hrsh7th/cmp-nvim-lua",
 		},
+		{
+			"SergioRibera/cmp-dotenv",
+		},
 	},
 }
 
@@ -140,6 +143,7 @@ function M.config()
 			{ name = "path" },
 			{ name = "calc" },
 			{ name = "emoji" },
+			{ name = "dotenv" },
 		},
 		confirm_opts = {
 			behavior = cmp.ConfirmBehavior.Replace,
