@@ -29,6 +29,12 @@ local M = {
 }
 
 function M.config()
+	-- values shown are defaults and will be used if not provided
+	vim.g.gruvbox_material_background = "hard"
+	vim.g.gruvbox_material_enable_bold = 1
+	vim.g.gruvbox_material_enable_italic = 1
+	vim.g.gruvbox_material_disable_italic = 1
+	vim.g.gruvbox_material_current_word = "high contrast background"
 	vim.cmd.colorscheme("gruvbox-material")
 end
 
