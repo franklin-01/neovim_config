@@ -80,6 +80,7 @@ function M.config()
 		"rnix",
 		"yamlls",
 		"jsonls",
+		"intelephense",
 	}
 
 	local default_diagnostic_config = {

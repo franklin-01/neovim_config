@@ -15,6 +15,7 @@ function M.config()
 		debug = false,
 		sources = {
 			formatting.stylua,
+			formatting["pretty-php"],
 			-- formatting.biome,
 			-- diagnostics.biome,
 			formatting.black,

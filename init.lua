@@ -42,7 +42,7 @@ spec("user.plugins.rainbow-delimiter")
 spec("user.plugins.blamer")
 spec("user.plugins.tenaille")
 spec("user.plugins.noice")
-spec("user.plugins.lsp-lines")
+-- spec("user.plugins.lsp-lines")
 
 --not working
 -- spec("user.plugins.quick-type")
