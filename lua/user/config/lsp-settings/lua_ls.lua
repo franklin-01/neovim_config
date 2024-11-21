@@ -6,7 +6,7 @@ return {
 				enable = false,
 			},
 			diagnostics = {
-				globals = { "vim", "spec" },
+				globals = { "vim", "spec", "love" },
 			},
 			runtime = {
 				version = "LuaJIT",
@@ -15,14 +15,15 @@ return {
 				},
 			},
 			workspace = {
-				checkThirdParty = false,
 				library = {
+					[vim.fn.expand("~/.love/love-api")] = true,
 					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 					[vim.fn.stdpath("config") .. "/lua"] = true,
 				},
+				checkThirdParty = false,
 			},
 			hint = {
-				enable = false,
+				enable = true,
 				arrayIndex = "Enable", -- "Enable" | "Auto" | "Disable"
 				await = true,
 				paramName = "All", -- "All" | "Literal" | "Disable"

@@ -9,17 +9,17 @@ function M.config()
 	local null_ls = require("null-ls")
 
 	local formatting = null_ls.builtins.formatting
-	local diagnostics = null_ls.builtins.diagnostics
+	-- local diagnostics = null_ls.builtins.diagnostics
 
 	null_ls.setup({
 		debug = false,
 		sources = {
 			formatting.stylua,
-			formatting["pretty-php"],
+			-- formatting["pretty-php"],
 			-- formatting.biome,
 			-- diagnostics.biome,
 			formatting.black,
-			diagnostics.golangci_lint,
+			-- diagnostics.golangci_lint,
 			-- formatting.prettier,
 			-- formatting.prettier.with {
 			--   extra_filetypes = { "toml" },

@@ -23,19 +23,30 @@
 -- 		},
 -- 	},
 -- }
+-- local M = {
+-- 	"sainnhe/gruvbox-material",
+-- 	priority = 1000, -- Load it before all the other start plugins.
+-- }
+
+-- function M.config()
+-- 	-- values shown are defaults and will be used if not provided
+-- 	vim.g.gruvbox_material_background = "hard"
+-- 	vim.g.gruvbox_material_enable_bold = 1
+-- 	vim.g.gruvbox_material_enable_italic = 1
+-- 	vim.g.gruvbox_material_disable_italic = 1
+-- 	vim.g.gruvbox_material_current_word = "high contrast background"
+-- 	vim.cmd.colorscheme("gruvbox-material")
+-- end
+
 local M = {
-	"sainnhe/gruvbox-material",
+	"bluz71/vim-moonfly-colors",
+	name = "moonfly",
+	lazy = false,
 	priority = 1000, -- Load it before all the other start plugins.
 }
 
 function M.config()
-	-- values shown are defaults and will be used if not provided
-	vim.g.gruvbox_material_background = "hard"
-	vim.g.gruvbox_material_enable_bold = 1
-	vim.g.gruvbox_material_enable_italic = 1
-	vim.g.gruvbox_material_disable_italic = 1
-	vim.g.gruvbox_material_current_word = "high contrast background"
-	vim.cmd.colorscheme("gruvbox-material")
+	vim.cmd("colorscheme moonfly")
 end
 
 return M
