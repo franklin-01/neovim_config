@@ -16,9 +16,9 @@ return {
 			},
 			workspace = {
 				library = {
-					[vim.fn.expand("~/.love/love-api")] = true,
 					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 					[vim.fn.stdpath("config") .. "/lua"] = true,
+					"${3rd}/love2d/library",
 				},
 				checkThirdParty = false,
 			},
