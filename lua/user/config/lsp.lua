@@ -68,7 +68,7 @@ function M.config()
 		-- "ts_ls",
 		"biome",
 		-- "cssls",
-		"gopls",
+		-- "gopls",
 		"html",
 		"lua_ls",
 		"pyright",
@@ -154,6 +154,35 @@ function M.config()
 			client.server_capabilities.documentFormattingProvider = false
 		end,
 		capabilities = M.common_capabilities(),
+	})
+
+	lspconfig.gopls.setup({
+		settings = {
+			gopls = {
+				usePlaceholders = true, -- Adiciona placeholders para parâmetros em snippets.
+				analyses = {
+					unusedparams = true, -- Detecta parâmetros não usados.
+					nilness = true, -- Análise de valores `nil`.
+					shadow = true, -- Detecta variáveis que "sombreiam" outras.
+					unusedwrite = true, -- Detecta valores atribuídos que nunca são usados.
+				},
+				staticcheck = true, -- Ativa verificações estáticas adicionais.
+				hints = {
+					assignVariableTypes = true, -- Mostra o tipo ao declarar uma variável.
+					compositeLiteralFields = true, -- Exibe os nomes dos campos em literais compostos.
+					compositeLiteralTypes = true, -- Mostra o tipo de literais compostos.
+					constantValues = true, -- Exibe os valores de constantes.
+					parameterNames = true, -- Mostra os nomes dos parâmetros em chamadas de função.
+					rangeVariableTypes = true, -- Mostra os tipos em loops `range`.
+				},
+			},
+		},
+		on_attach = function(client, bufnr)
+			-- Configure o espaçamento de tabulação
+			vim.bo[bufnr].tabstop = 4 -- Define o número de espaços para uma tabulação
+			vim.bo[bufnr].shiftwidth = 4 -- Define o número de espaços para indentação
+			vim.bo[bufnr].expandtab = false -- Use tabs reais (em vez de espaços)
+		end,
 	})
 end
 
