@@ -1,15 +1,5 @@
 local util = require("lspconfig.util")
 
-local root_files = {
-    "pyproject.toml",
-    "setup.py",
-    "setup.cfg",
-    "requirements.txt",
-    "Pipfile",
-    "pyrightconfig.json",
-    ".git",
-}
-
 local function organize_imports()
     local params = {
         command = "pyright.organizeimports",
@@ -49,21 +39,19 @@ local function set_python_path(path)
 end
 
 return {
-    default_config = {
-        cmd = { "pyright-langserver", "--stdio" },
-        filetypes = { "python" },
-        root_dir = function(fname)
-            return util.root_pattern(unpack(root_files))(fname)
-        end,
-        single_file_support = true,
-        settings = {
-            python = {
-                analysis = {
-                    autoSearchPaths = true,
-                    useLibraryCodeForTypes = true,
-                    diagnosticMode = "openFilesOnly",
-                },
+    cmd = { "pyright-langserver", "--stdio" },
+    filetypes = { "python" },
+    single_file_support = true,
+    settings = {
+        python = {
+            analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                diagnosticMode = "openFilesOnly",
             },
+            venvPath = vim.loop.cwd(),
+            venv = "venv",
+            pythonPath = vim.loop.cwd() .. "/venv/bin/python",
         },
     },
     commands = {
@@ -77,12 +65,5 @@ return {
             nargs = 1,
             complete = "file",
         },
-    },
-    docs = {
-        description = [[
-https://github.com/microsoft/pyright
-
-`pyright`, a static type checker and language server for python
-]],
     },
 }
