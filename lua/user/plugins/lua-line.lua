@@ -90,7 +90,7 @@ function M.config()
 			section_separators = { left = "", right = "" },
 			ignore_focus = { "NvimTree" },
 			component_separators = { left = "", right = "" },
-			theme = "gruvbox-material",
+			-- theme = "gruvbox-material",
 		},
 		sections = {
 			lualine_a = { "branch" },
