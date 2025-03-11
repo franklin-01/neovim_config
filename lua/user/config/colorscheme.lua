@@ -1,4 +1,6 @@
+-- local M = {}
 -- better vscode theme
+
 local M = {
     "Mofiqul/vscode.nvim",
     priority = 1000,
@@ -23,6 +25,11 @@ local M = {
         },
     },
 }
+
+-- local M = {
+--     "catppuccin/nvim",
+--     priority = 1000, -- Load it before all the other start plugins.
+-- }
 -- local M = {
 -- 	"sainnhe/gruvbox-material",
 -- 	priority = 1000, -- Load it before all the other start plugins.
@@ -47,7 +54,35 @@ local M = {
 -- 	lazy = false,
 -- 	priority = 1000, -- Load it before all the other start plugins.
 -- }
---
+
 function M.config() vim.cmd("colorscheme vscode") end
+
+-- function M.config()
+--     require("catppuccin").setup({
+--         term_colors = true,
+--         transparent_background = false,
+--         styles = {
+--             comments = {},
+--             conditionals = {},
+--             loops = {},
+--             functions = {},
+--             keywords = {},
+--             strings = {},
+--             variables = {},
+--             numbers = {},
+--             booleans = {},
+--             properties = {},
+--             types = {},
+--         },
+--         color_overrides = {
+--             mocha = {
+--                 base = "#000000",
+--                 mantle = "#000000",
+--                 crust = "#000000",
+--             },
+--         },
+--     })
+--     vim.cmd("colorscheme catppuccin")
+-- end
 
 return M

@@ -40,10 +40,12 @@ vim.opt.title = false
 -- colorcolumn = "120",
 vim.opt.fillchars = vim.opt.fillchars + "eob: "
 vim.opt.fillchars:append({
-	stl = " ",
+    stl = " ",
 })
 
 vim.opt.shortmess:append("c")
+
+vim.opt.iskeyword:remove("_")
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])

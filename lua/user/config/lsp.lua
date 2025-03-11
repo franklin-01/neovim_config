@@ -106,6 +106,7 @@ function M.config()
         "tailwindcss",
         -- "rust_analyzer",
         -- "clangd",
+        "sqls",
         "dockerls",
         "docker_compose_language_service",
         "rnix",
@@ -255,6 +256,15 @@ function M.config()
                 fallbackFlags = { "-std=c23" }, -- Adicione flags de fallback, se necessário
             },
         },
+    })
+
+    lspconfig.sqls.setup({
+        on_attach = function(client, bufnr)
+            lsp_keymaps(bufnr)
+            -- disable formatter
+            client.server_capabilities.documentFormattingProvider = false
+        end,
+        capabilities = M.common_capabilities(),
     })
 
     -- lspconfig.pyright.setup({

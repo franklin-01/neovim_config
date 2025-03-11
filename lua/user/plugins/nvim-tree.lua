@@ -58,8 +58,8 @@ function M.config()
                 open_win_config = function()
                     local width = vim.o.columns
                     local height = vim.o.lines
-                    local win_width = math.min(50, math.floor(width * 0.5)) -- 50 colunas ou 50% da largura
-                    local win_height = math.min(30, math.floor(height * 0.6)) -- 30 linhas ou 60% da altura
+                    local win_width = math.min(60, math.floor(width * 0.5)) -- 50 colunas ou 50% da largura
+                    local win_height = math.min(40, math.floor(height * 0.6)) -- 30 linhas ou 60% da altura
                     return {
                         relative = "editor",
                         border = "rounded",

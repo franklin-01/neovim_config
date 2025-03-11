@@ -29,6 +29,7 @@ function M.config()
             formatting.black.with({
                 extra_args = { "--line-length", "79" },
             }),
+            formatting.pg_format,
         },
     })
 end
