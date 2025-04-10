@@ -52,6 +52,7 @@ function M.config()
         view = {
             number = false,
             side = "right",
+            width = 40,
             float = {
                 enable = true,
                 quit_on_focus_loss = true,

@@ -8,7 +8,7 @@ local M = {
 function M.config()
     local servers = {
         -- python
-        "ruff",
+        -- "ruff",
         -- "black",
         "pyright",
         --"flake8",
@@ -33,7 +33,7 @@ function M.config()
         "dockerls",
         "docker_compose_language_service",
         -- nix
-        "rnix",
+        -- "rnix",
         -- yaml
         "yamlls",
         -- json

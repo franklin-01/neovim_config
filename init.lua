@@ -27,7 +27,7 @@ spec("user.plugins.navic")
 spec("user.plugins.breadcrumps")
 spec("user.plugins.harpoon")
 spec("user.plugins.illuminate")
-spec("user.plugins.ufo")
+-- spec("user.plugins.ufo") --BUG DO NOT USE THIS PLUGIN
 spec("user.plugins.git-signs")
 spec("user.plugins.auto-pairs")
 spec("user.plugins.indentline")
@@ -46,8 +46,6 @@ spec("user.plugins.love")
 spec("user.plugins.gopher")
 -- spec("user.plugins.lsp-lines")
 
---not working
--- spec("user.plugins.quick-type")
 
 -- extras
 spec("user.extra.tabby")

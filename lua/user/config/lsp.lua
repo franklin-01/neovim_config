@@ -102,7 +102,7 @@ function M.config()
         -- "gopls",
         "html",
         "lua_ls",
-        "pyright",
+        -- "pyright",
         "tailwindcss",
         -- "rust_analyzer",
         -- "clangd",
@@ -180,7 +180,7 @@ function M.config()
             opts = vim.tbl_deep_extend("force", settings, opts)
         end
 
-        if server == "lua_ls" then require("neodev").setup({}) end
+        -- if server == "lua_ls" then require("neodev").setup({}) end
 
         lspconfig[server].setup(opts)
     end
@@ -267,26 +267,26 @@ function M.config()
         capabilities = M.common_capabilities(),
     })
 
-    -- lspconfig.pyright.setup({
-    --     settings = {
-    --         python = {
-    --             analysis = {
-    --                 typeCheckingMode = "basic", -- Ou "strict" para verificações mais rigorosas
-    --                 diagnosticMode = "workspace", -- Ou "openFilesOnly" para analisar apenas arquivos abertos
-    --                 useLibraryCodeForTypes = true, -- Habilita o uso de código de biblioteca para inferência de tipos
-    --                 autoImportCompletions = true, -- Habilita sugestões automáticas de importação
-    --                 autoSearchPaths = true, -- Habilita a busca automática por caminhos de importação
-    --                 diagnosticSeverityOverrides = {
-    --                     reportMissingImports = "warning", -- Altera a severidade para "warning"
-    --                     reportUnusedImport = "information", -- Altera a severidade para "information"
-    --                 },
-    --             },
-    --             pythonPath = vim.fn.getcwd() .. "/venv/bin/python",
-    --         },
-    --     },
-    --     on_attach = function(_, bufnr) lsp_keymaps(bufnr) end,
-    --     capabilities = M.common_capabilities(),
-    -- })
+    lspconfig.pyright.setup({
+        settings = {
+            python = {
+                analysis = {
+                    typeCheckingMode = "basic", -- Ou "strict" para verificações mais rigorosas
+                    diagnosticMode = "workspace", -- Ou "openFilesOnly" para analisar apenas arquivos abertos
+                    useLibraryCodeForTypes = true, -- Habilita o uso de código de biblioteca para inferência de tipos
+                    autoImportCompletions = true, -- Habilita sugestões automáticas de importação
+                    autoSearchPaths = true, -- Habilita a busca automática por caminhos de importação
+                    diagnosticSeverityOverrides = {
+                        reportMissingImports = "warning", -- Altera a severidade para "warning"
+                        reportUnusedImport = "information", -- Altera a severidade para "information"
+                    },
+                },
+                pythonPath = vim.fn.getcwd() .. "/venv/bin/python",
+            },
+        },
+        on_attach = function(_, bufnr) lsp_keymaps(bufnr) end,
+        capabilities = M.common_capabilities(),
+    })
 end
 
 return M
