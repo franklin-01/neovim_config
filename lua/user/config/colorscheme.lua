@@ -30,23 +30,24 @@
 --     "catppuccin/nvim",
 --     priority = 1000, -- Load it before all the other start plugins.
 -- }
--- local M = {
--- 	"sainnhe/gruvbox-material",
--- 	priority = 1000, -- Load it before all the other start plugins.
--- }
---
--- function M.config()
--- 	-- values shown are defaults and will be used if not provided
--- 	vim.g.gruvbox_material_background = "hard"
--- 	vim.g.gruvbox_material_enable_bold = 0
--- 	vim.g.gruvbox_material_enable_italic = 1
--- 	vim.g.gruvbox_material_disable_italic = 0
--- 	vim.g.gruvbox_material_disable_italic_comment = 0
--- 	vim.g.gruvbox_material_current_word = "high contrast background"
--- 	vim.g.gruvbox_material_better_performance = 1
--- 	-- vim.g.gruvbox_material_foreground = "original"
--- 	vim.cmd.colorscheme("gruvbox-material")
--- end
+
+local M = {
+	"sainnhe/gruvbox-material",
+	priority = 1000, -- Load it before all the other start plugins.
+}
+
+function M.config()
+	-- values shown are defaults and will be used if not provided
+	vim.g.gruvbox_material_background = "hard"
+	vim.g.gruvbox_material_enable_bold = 0
+	vim.g.gruvbox_material_enable_italic = 1
+	vim.g.gruvbox_material_disable_italic = 0
+	vim.g.gruvbox_material_disable_italic_comment = 0
+	vim.g.gruvbox_material_current_word = "high contrast background"
+	vim.g.gruvbox_material_better_performance = 1
+	-- vim.g.gruvbox_material_foreground = "original"
+	vim.cmd.colorscheme("gruvbox-material")
+end
 
 -- local M = {
 -- 	"bluz71/vim-moonfly-colors",
@@ -84,15 +85,15 @@
 --     })
 --     vim.cmd("colorscheme catppuccin")
 -- end
-local M = {
-    "bluz71/vim-nightfly-colors",
-    name = "nightfly",
-    lazy = false,
-    priority = 1000
-}
-
-function M.config()
-    vim.cmd("colorscheme nightfly")
-end
+-- local M = {
+--     "bluz71/vim-nightfly-colors",
+--     name = "nightfly",
+--     lazy = false,
+--     priority = 1000
+-- }
+--
+-- function M.config()
+--     vim.cmd("colorscheme nightfly")
+-- end
 
 return M

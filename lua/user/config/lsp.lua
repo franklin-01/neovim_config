@@ -96,7 +96,7 @@ function M.config()
 
     local servers = {
         "bashls",
-        -- "ts_ls",
+        "vtsls",
         "biome",
         -- "cssls",
         -- "gopls",
@@ -181,18 +181,88 @@ function M.config()
         end
 
         -- if server == "lua_ls" then require("neodev").setup({}) end
+    if not (server == "vtsls")  then
+      lspconfig[server].setup(opts)
+    end
 
-        lspconfig[server].setup(opts)
     end
 
     -- manual config
-    lspconfig.ts_ls.setup({
-        on_attach = function(client, bufnr)
+    -- lspconfig.ts_ls.setup({
+    --     on_attach = function(client, bufnr)
+    --         lsp_keymaps(bufnr)
+    --         -- disable formatter
+    --         client.server_capabilities.documentFormattingProvider = false
+    --     end,
+    --     capabilities = M.common_capabilities(),
+    -- })
+
+   lspconfig.vtsls.setup({
+  -- Anexa capabilities e on_attach se estiver usando nvim-cmp ou keymaps
+  -- capabilities = ...,
+  -- on_attach = ...,
+     on_attach = function(client, bufnr)
             lsp_keymaps(bufnr)
             -- disable formatter
-            client.server_capabilities.documentFormattingProvider = false
-        end,
-        capabilities = M.common_capabilities(),
+            -- client.server_capabilities.documentFormattingProvider = false
+     end,
+
+      settings = {
+        -- Usa o TypeScript do projeto se disponível
+        vtsls = {
+          autoUseWorkspaceTsdk = true,
+          enableExperimentalServer = true,
+          experimental = {
+            completion = {
+              completeFunctionCalls = true, -- adiciona parênteses e argumentos automaticamente
+            },
+            serverStatusNotification = true,
+            tsserver = {
+              logVerbosity = "off", -- pode ser 'terse' ou 'verbose' para debug
+            },
+          },
+        },
+
+        typescript = {
+          suggest = {
+            autoImports = true,
+            completeFunctionCalls = true,
+          },
+          inlayHints = {
+            parameterNames = { enabled = "literals" },
+            parameterTypes = { enabled = true },
+            variableTypes = { enabled = true },
+            propertyDeclarationTypes = { enabled = true },
+            functionLikeReturnTypes = { enabled = true },
+            enumMemberValues = { enabled = true },
+          },
+        },
+
+        javascript = {
+          suggest = {
+            autoImports = true,
+            completeFunctionCalls = true,
+          },
+          inlayHints = {
+            parameterNames = { enabled = "literals" },
+            parameterTypes = { enabled = true },
+            variableTypes = { enabled = true },
+            propertyDeclarationTypes = { enabled = true },
+            functionLikeReturnTypes = { enabled = true },
+            enumMemberValues = { enabled = true },
+          },
+        },
+
+        completions = {
+          completeFunctionCalls = true,
+        },
+
+        -- Ajuda a lidar melhor com projetos grandes
+        implicitProjectConfiguration = {
+          checkJs = true,
+          experimentalDecorators = true,
+        },
+      },
     })
 
     lspconfig.cssls.setup({
