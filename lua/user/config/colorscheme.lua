@@ -1,62 +1,89 @@
+--better vscode theme
 -- local M = {}
--- better vscode theme
 
 -- local M = {
 --     "Mofiqul/vscode.nvim",
 --     priority = 1000,
 --     opts = {
---         -- Enable italic comment
+--         --          Enable italic comment
 --         italic_comments = true,
 --
---         -- Underline `@markup.link.*` variants
+--         --          Underline `@markup.link.*` variants
 --         underline_links = true,
---
---         -- Disable nvim-tree background color
+--         --
+--         --          Disable nvim-tree background color
 --         disable_nvimtree_bg = false,
 --
---         -- Override colors (see ./lua/vscode/colors.lua)
+--         --         Override colors (see ./lua/vscode/colors.lua)
 --         color_overrides = {
---             -- vscLineNumber = '#FFFFFF',
+--             vscLineNumber = '#FFFFFF',
 --         },
---         -- Override highlight groups (see ./lua/vscode/theme.lua)
+--         --          Override highlight groups (see ./lua/vscode/theme.lua)
 --         group_overrides = {
---             -- this supports the same val table as vim.api.nvim_set_hl
---             -- use colors from this colorscheme by requiring vscode.colors!
+--             --              this supports the same val table as vim.api.nvim_set_hl
+--             --              use colors from this colorscheme by requiring vscode.colors!
 --         },
 --     },
 -- }
+-- --
+-- function M.config()
+--     vim.g.background = "dark"
+--     vim.cmd("colorscheme vscode")
+-- end
 
 -- local M = {
 --     "catppuccin/nvim",
 --     priority = 1000, -- Load it before all the other start plugins.
 -- }
 
+-- local M = {
+-- 	"sainnhe/gruvbox-material",
+-- 	priority = 1000, -- Load it before all the other start plugins.
+-- }
+--
+-- function M.config()
+-- 	-- values shown are defaults and will be used if not provided
+-- 	vim.g.gruvbox_material_background = "hard"
+-- 	vim.g.gruvbox_material_enable_bold = 0
+-- 	vim.g.gruvbox_material_enable_italic = 1
+-- 	vim.g.gruvbox_material_disable_italic = 0
+-- 	vim.g.gruvbox_material_disable_italic_comment = 0
+-- 	vim.g.gruvbox_material_current_word = "high contrast background"
+-- 	vim.g.gruvbox_material_better_performance = 1
+-- 	-- vim.g.gruvbox_material_foreground = "original"
+-- 	vim.cmd.colorscheme("gruvbox-material")
+-- end
+
+-- local M = {
+--     "bluz71/vim-moonfly-colors",
+--     name = "moonfly",
+--     lazy = false,
+--     priority = 1000, -- Load it before all the other start plugins.
+-- }
+
+-- function M.config() vim.cmd("colorscheme moonfly") end
+
+
 local M = {
-	"sainnhe/gruvbox-material",
-	priority = 1000, -- Load it before all the other start plugins.
+  'sainnhe/everforest',
+  lazy = false,
+  priority = 1000,
+  config = function()
+  end
 }
 
 function M.config()
-	-- values shown are defaults and will be used if not provided
-	vim.g.gruvbox_material_background = "hard"
-	vim.g.gruvbox_material_enable_bold = 0
-	vim.g.gruvbox_material_enable_italic = 1
-	vim.g.gruvbox_material_disable_italic = 0
-	vim.g.gruvbox_material_disable_italic_comment = 0
-	vim.g.gruvbox_material_current_word = "high contrast background"
-	vim.g.gruvbox_material_better_performance = 1
-	-- vim.g.gruvbox_material_foreground = "original"
-	vim.cmd.colorscheme("gruvbox-material")
+  vim.g.background = "light"
+  vim.g.everforest_background = "soft"
+  vim.g.everforest_enable_bold = 1
+  vim.g.everforest_enable_italic = 1
+  vim.g.everforest_disable_italic = 0
+  vim.g.everforest_disable_italic_comment = 0
+  vim.g.everforest_current_word = "high contrast background"
+  vim.g.everforest_better_performance = 1
+  vim.g.everforest_foreground = "original"
+  vim.cmd.colorscheme('everforest')
 end
-
--- local M = {
--- 	"bluz71/vim-moonfly-colors",
--- 	name = "moonfly",
--- 	lazy = false,
--- 	priority = 1000, -- Load it before all the other start plugins.
--- }
-
--- function M.config() vim.cmd("colorscheme gruvbox-material") end
 
 -- function M.config()
 --     require("catppuccin").setup({
@@ -86,14 +113,14 @@ end
 --     vim.cmd("colorscheme catppuccin")
 -- end
 -- local M = {
---     "bluz71/vim-nightfly-colors",
---     name = "nightfly",
---     lazy = false,
---     priority = 1000
+--   "bluz71/vim-nightfly-colors",
+--   name = "nightfly",
+--   lazy = false,
+--   priority = 1000
 -- }
 --
 -- function M.config()
---     vim.cmd("colorscheme nightfly")
+--   vim.cmd("colorscheme nightfly")
 -- end
-
+--
 return M

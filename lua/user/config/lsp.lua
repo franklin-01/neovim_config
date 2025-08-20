@@ -174,17 +174,15 @@ function M.config()
             capabilities = M.common_capabilities(),
         }
 
-        local require_ok, settings =
-            pcall(require, "user.config.lsp-settings." .. server)
+        local require_ok, settings = pcall(require, "user.config.lsp-settings." .. server)
         if require_ok then
             opts = vim.tbl_deep_extend("force", settings, opts)
         end
 
-        -- if server == "lua_ls" then require("neodev").setup({}) end
-    if not (server == "vtsls")  then
-      lspconfig[server].setup(opts)
-    end
-
+        if server == "lua_ls" then require("neodev").setup({}) end
+        if not (server == "vtsls") then
+            lspconfig[server].setup(opts)
+        end
     end
 
     -- manual config
@@ -197,72 +195,72 @@ function M.config()
     --     capabilities = M.common_capabilities(),
     -- })
 
-   lspconfig.vtsls.setup({
-  -- Anexa capabilities e on_attach se estiver usando nvim-cmp ou keymaps
-  -- capabilities = ...,
-  -- on_attach = ...,
-     on_attach = function(client, bufnr)
+    lspconfig.vtsls.setup({
+        -- Anexa capabilities e on_attach se estiver usando nvim-cmp ou keymaps
+        -- capabilities = ...,
+        -- on_attach = ...,
+        on_attach = function(client, bufnr)
             lsp_keymaps(bufnr)
             -- disable formatter
             -- client.server_capabilities.documentFormattingProvider = false
-     end,
+        end,
 
-      settings = {
-        -- Usa o TypeScript do projeto se disponível
-        vtsls = {
-          autoUseWorkspaceTsdk = true,
-          enableExperimentalServer = true,
-          experimental = {
-            completion = {
-              completeFunctionCalls = true, -- adiciona parênteses e argumentos automaticamente
+        settings = {
+            -- Usa o TypeScript do projeto se disponível
+            vtsls = {
+                autoUseWorkspaceTsdk = true,
+                enableExperimentalServer = true,
+                experimental = {
+                    completion = {
+                        completeFunctionCalls = true, -- adiciona parênteses e argumentos automaticamente
+                    },
+                    serverStatusNotification = true,
+                    tsserver = {
+                        logVerbosity = "off", -- pode ser 'terse' ou 'verbose' para debug
+                    },
+                },
             },
-            serverStatusNotification = true,
-            tsserver = {
-              logVerbosity = "off", -- pode ser 'terse' ou 'verbose' para debug
+
+            typescript = {
+                suggest = {
+                    autoImports = true,
+                    completeFunctionCalls = true,
+                },
+                inlayHints = {
+                    parameterNames = { enabled = "literals" },
+                    parameterTypes = { enabled = true },
+                    variableTypes = { enabled = true },
+                    propertyDeclarationTypes = { enabled = true },
+                    functionLikeReturnTypes = { enabled = true },
+                    enumMemberValues = { enabled = true },
+                },
             },
-          },
-        },
 
-        typescript = {
-          suggest = {
-            autoImports = true,
-            completeFunctionCalls = true,
-          },
-          inlayHints = {
-            parameterNames = { enabled = "literals" },
-            parameterTypes = { enabled = true },
-            variableTypes = { enabled = true },
-            propertyDeclarationTypes = { enabled = true },
-            functionLikeReturnTypes = { enabled = true },
-            enumMemberValues = { enabled = true },
-          },
-        },
+            javascript = {
+                suggest = {
+                    autoImports = true,
+                    completeFunctionCalls = true,
+                },
+                inlayHints = {
+                    parameterNames = { enabled = "literals" },
+                    parameterTypes = { enabled = true },
+                    variableTypes = { enabled = true },
+                    propertyDeclarationTypes = { enabled = true },
+                    functionLikeReturnTypes = { enabled = true },
+                    enumMemberValues = { enabled = true },
+                },
+            },
 
-        javascript = {
-          suggest = {
-            autoImports = true,
-            completeFunctionCalls = true,
-          },
-          inlayHints = {
-            parameterNames = { enabled = "literals" },
-            parameterTypes = { enabled = true },
-            variableTypes = { enabled = true },
-            propertyDeclarationTypes = { enabled = true },
-            functionLikeReturnTypes = { enabled = true },
-            enumMemberValues = { enabled = true },
-          },
-        },
+            completions = {
+                completeFunctionCalls = true,
+            },
 
-        completions = {
-          completeFunctionCalls = true,
+            -- Ajuda a lidar melhor com projetos grandes
+            implicitProjectConfiguration = {
+                checkJs = true,
+                experimentalDecorators = true,
+            },
         },
-
-        -- Ajuda a lidar melhor com projetos grandes
-        implicitProjectConfiguration = {
-          checkJs = true,
-          experimentalDecorators = true,
-        },
-      },
     })
 
     lspconfig.cssls.setup({
@@ -277,29 +275,55 @@ function M.config()
     lspconfig.gopls.setup({
         settings = {
             gopls = {
-                usePlaceholders = true, -- Adiciona placeholders para parâmetros em snippets.
-                analyses = {
-                    unusedparams = true, -- Detecta parâmetros não usados.
-                    nilness = true, -- Análise de valores `nil`.
-                    shadow = true, -- Detecta variáveis que "sombreiam" outras.
-                    unusedwrite = true, -- Detecta valores atribuídos que nunca são usados.
+                gofumpt = true,
+                codelenses = {
+                    gc_details = true,
+                    generate = true,
+                    regenerate_cgo = true,
+                    run_govulncheck = true,
+                    test = true,
+                    tidy = true,
+                    upgrade_dependency = true,
+                    vendor = true,
                 },
-                staticcheck = true, -- Ativa verificações estáticas adicionais.
                 hints = {
-                    assignVariableTypes = true, -- Mostra o tipo ao declarar uma variável.
-                    compositeLiteralFields = true, -- Exibe os nomes dos campos em literais compostos.
-                    compositeLiteralTypes = true, -- Mostra o tipo de literais compostos.
-                    constantValues = true, -- Exibe os valores de constantes.
-                    parameterNames = true, -- Mostra os nomes dos parâmetros em chamadas de função.
-                    rangeVariableTypes = true, -- Mostra os tipos em loops `range`.
+                    assignVariableTypes = true,
+                    compositeLiteralFields = true,
+                    compositeLiteralTypes = true,
+                    constantValues = true,
+                    functionTypeParameters = true,
+                    parameterNames = true,
+                    rangeVariableTypes = true,
                 },
+                analyses = {
+                    nilness = true,
+                    unusedparams = true,
+                    unusedwrite = true,
+                    useany = true,
+                },
+                usePlaceholders = true,
+                completeUnimported = true,
+                staticcheck = true,
+                directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+                semanticTokens = true,
             },
         },
-        on_attach = function(_, bufnr)
+        on_attach = function(client, bufnr)
+            if not client.server_capabilities.semanticTokensProvider then
+                local semantic = client.config.capabilities.textDocument.semanticTokens
+                client.server_capabilities.semanticTokensProvider = {
+                    full = true,
+                    legend = {
+                        tokenTypes = semantic.tokenTypes,
+                        tokenModifiers = semantic.tokenModifiers,
+                    },
+                    range = true,
+                }
+            end
             lsp_keymaps(bufnr)
             -- Configure o espaçamento de tabulação
-            vim.bo[bufnr].tabstop = 4 -- Define o número de espaços para uma tabulação
-            vim.bo[bufnr].shiftwidth = 4 -- Define o número de espaços para indentação
+            vim.bo[bufnr].tabstop = 4       -- Define o número de espaços para uma tabulação
+            vim.bo[bufnr].shiftwidth = 4    -- Define o número de espaços para indentação
             vim.bo[bufnr].expandtab = false -- Use tabs reais (em vez de espaços)
         end,
     })
@@ -341,13 +365,13 @@ function M.config()
         settings = {
             python = {
                 analysis = {
-                    typeCheckingMode = "basic", -- Ou "strict" para verificações mais rigorosas
-                    diagnosticMode = "workspace", -- Ou "openFilesOnly" para analisar apenas arquivos abertos
-                    useLibraryCodeForTypes = true, -- Habilita o uso de código de biblioteca para inferência de tipos
-                    autoImportCompletions = true, -- Habilita sugestões automáticas de importação
-                    autoSearchPaths = true, -- Habilita a busca automática por caminhos de importação
+                    typeCheckingMode = "basic",             -- Ou "strict" para verificações mais rigorosas
+                    diagnosticMode = "workspace",           -- Ou "openFilesOnly" para analisar apenas arquivos abertos
+                    useLibraryCodeForTypes = true,          -- Habilita o uso de código de biblioteca para inferência de tipos
+                    autoImportCompletions = true,           -- Habilita sugestões automáticas de importação
+                    autoSearchPaths = true,                 -- Habilita a busca automática por caminhos de importação
                     diagnosticSeverityOverrides = {
-                        reportMissingImports = "warning", -- Altera a severidade para "warning"
+                        reportMissingImports = "warning",   -- Altera a severidade para "warning"
                         reportUnusedImport = "information", -- Altera a severidade para "information"
                     },
                 },

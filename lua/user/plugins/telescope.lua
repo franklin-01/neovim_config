@@ -5,16 +5,16 @@ local M = {
 
 function M.config()
   local wk = require "which-key"
-  wk.add ({
-    { "<leader>bb", "<cmd>Telescope buffers previewer=false<cr>", desc = "Find" },
-    { "<leader>fb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
-    { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme" },
-    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
-    { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
-    { "<leader>fl", "<cmd>Telescope resume<cr>", desc = "Last Search" },
+  wk.add({
+    { "<leader>bb", "<cmd>Telescope buffers previewer=false<cr>",                       desc = "Find" },
+    { "<leader>fb", "<cmd>Telescope git_branches<cr>",                                  desc = "Checkout branch" },
+    { "<leader>fc", "<cmd>Telescope colorscheme<cr>",                                   desc = "Colorscheme" },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>",                                    desc = "Find files" },
+    { "<leader>fh", "<cmd>Telescope help_tags<cr>",                                     desc = "Help" },
+    { "<leader>fl", "<cmd>Telescope resume<cr>",                                        desc = "Last Search" },
     { "<leader>fp", "<cmd>lua require('telescope').extensions.projects.projects()<cr>", desc = "Projects" },
-    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent File" },
-    { "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Find Text" },
+    { "<leader>fr", "<cmd>Telescope oldfiles<cr>",                                      desc = "Recent File" },
+    { "<leader>ft", "<cmd>Telescope live_grep<cr>",                                     desc = "Find Text" },
   })
 
   local icons = require "user.extra.icons"
@@ -69,7 +69,7 @@ function M.config()
 
       find_files = {
         theme = "dropdown",
-        previewer = false,
+        previewer = true,
       },
 
       buffers = {
@@ -117,10 +117,10 @@ function M.config()
     },
     extensions = {
       fzf = {
-        fuzzy = true, -- false will only do exact matching
+        fuzzy = true,                   -- false will only do exact matching
         override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true, -- override the file sorter
-        case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+        override_file_sorter = true,    -- override the file sorter
+        case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
       },
     },
   }
