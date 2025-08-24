@@ -80,7 +80,7 @@ function M.config()
     persist_size = false,
     direction = "float",
     close_on_exit = true, -- close the terminal window when the process exits
-    shell = "~/.local/bin/zsh",
+    shell = "/bin/zsh",
     float_opts = {
       border = "rounded",
       winblend = 0,

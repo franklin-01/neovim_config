@@ -328,28 +328,21 @@ function M.config()
         end,
     })
 
-    lspconfig.clangd.setup({
-        on_attach = function(client, bufnr)
-            -- Ative a formatação se for suportada pelo clangd
-            if client.server_capabilities.documentFormattingProvider then
-                vim.api.nvim_buf_set_option(
-                    bufnr,
-                    "formatexpr",
-                    "v:lua.vim.lsp.formatexpr()"
-                )
-            end
-
-            -- Configure opções de indentação e tabulação
-            vim.bo[bufnr].tabstop = 4
-            vim.bo[bufnr].shiftwidth = 4
-            vim.bo[bufnr].expandtab = false
-        end,
-
-        settings = {
-            clangd = {
-                fallbackFlags = { "-std=c23" }, -- Adicione flags de fallback, se necessário
-            },
+   lspconfig.clangd.setup({
+    cmd = { "clangd", "--fallback-style=none" }, -- prevents fallback to LLVM
+    on_attach = function(client, bufnr)
+        if client.server_capabilities.documentFormattingProvider then
+            vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr()")
+        end
+        vim.bo[bufnr].tabstop = 4
+        vim.bo[bufnr].shiftwidth = 4
+        vim.bo[bufnr].expandtab = false
+    end,
+    settings = {
+        clangd = {
+            fallbackFlags = { "-std=c99" },
         },
+    },
     })
 
     lspconfig.sqls.setup({

@@ -30,9 +30,9 @@ function M.config()
       --     extra_args = { "--line-length", "79" },
       -- }),
       formatting.pg_format,
-      formatting.clang_format.with({
-        extra_args = { "-style=file:/home/franklin/.config/clang-format" },
-      }),
+      -- formatting.clang_format.with({
+      --   extra_args = { "-style=file:/home/franklin/.config/clang-format" },
+      -- }),
     },
   })
 end

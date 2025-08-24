@@ -54,36 +54,36 @@
 -- 	vim.cmd.colorscheme("gruvbox-material")
 -- end
 
--- local M = {
---     "bluz71/vim-moonfly-colors",
---     name = "moonfly",
---     lazy = false,
---     priority = 1000, -- Load it before all the other start plugins.
--- }
-
--- function M.config() vim.cmd("colorscheme moonfly") end
-
-
 local M = {
-  'sainnhe/everforest',
-  lazy = false,
-  priority = 1000,
-  config = function()
-  end
+    "bluz71/vim-moonfly-colors",
+    name = "moonfly",
+    lazy = false,
+    priority = 1000, -- Load it before all the other start plugins.
 }
 
-function M.config()
-  vim.g.background = "light"
-  vim.g.everforest_background = "soft"
-  vim.g.everforest_enable_bold = 1
-  vim.g.everforest_enable_italic = 1
-  vim.g.everforest_disable_italic = 0
-  vim.g.everforest_disable_italic_comment = 0
-  vim.g.everforest_current_word = "high contrast background"
-  vim.g.everforest_better_performance = 1
-  vim.g.everforest_foreground = "original"
-  vim.cmd.colorscheme('everforest')
-end
+function M.config() vim.cmd("colorscheme moonfly") end
+
+
+-- local M = {
+--   'sainnhe/everforest',
+--   lazy = false,
+--   priority = 1000,
+--   config = function()
+--   end
+-- }
+--
+-- function M.config()
+--   vim.g.background = "light"
+--   vim.g.everforest_background = "soft"
+--   vim.g.everforest_enable_bold = 1
+--   vim.g.everforest_enable_italic = 1
+--   vim.g.everforest_disable_italic = 0
+--   vim.g.everforest_disable_italic_comment = 0
+--   vim.g.everforest_current_word = "high contrast background"
+--   vim.g.everforest_better_performance = 1
+--   vim.g.everforest_foreground = "original"
+--   vim.cmd.colorscheme('everforest')
+-- end
 
 -- function M.config()
 --     require("catppuccin").setup({
