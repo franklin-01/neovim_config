@@ -63,7 +63,7 @@ function M.config()
                     local win_height = math.min(40, math.floor(height * 0.6)) -- 30 linhas ou 60% da altura
                     return {
                         relative = "editor",
-                        border = "rounded",
+                        border = "double",
                         width = win_width,
                         height = win_height,
                         row = math.floor((height - win_height) / 2),

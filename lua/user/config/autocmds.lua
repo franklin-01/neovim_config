@@ -1,98 +1,99 @@
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
+vim.api.nvim_create_autocmd("VimEnter", {
   callback = function(data)
-    -- Verifica se o arquivo é um diretório
-    local directory = vim.fn.isdirectory(data.file) == 1
+    -- Check if the startup argument is a directory
+    local is_dir = vim.fn.isdirectory(data.file) == 1
+    if not is_dir then return end
 
-    if not directory then
-      return
-    end
-
-    -- Altera o diretório atual para o passado como argumento
+    -- Change to the directory
     vim.cmd.cd(data.file)
 
-    -- Abre o NvimTree
+    -- Open NvimTree
     require("nvim-tree.api").tree.open()
 
-    -- Fecha o buffer padrão que abre junto
-    if #vim.api.nvim_list_bufs() == 2 then
-      vim.cmd("bdelete " .. 1)
+    -- Close the first listed buffer if it exists
+    local bufs = vim.api.nvim_list_bufs()
+    for _, buf in ipairs(bufs) do
+      if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buflisted then
+        vim.api.nvim_buf_delete(buf, { force = true })
+        break
+      end
     end
   end,
 })
 
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-  callback = function()
-    vim.cmd("set formatoptions-=cro")
-  end,
+    callback = function()
+        vim.cmd("set formatoptions-=cro")
+    end,
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = {
-    "netrw",
-    "Jaq",
-    "qf",
-    "git",
-    "help",
-    "man",
-    "lspinfo",
-    "oil",
-    "spectre_panel",
-    "lir",
-    "DressingSelect",
-    "tsplayground",
-    "",
-  },
-  callback = function()
-    vim.cmd([[
+    pattern = {
+        "git",
+        "lspinfo",
+        "netrw",
+        "Jaq",
+        "qf",
+        "help",
+        "man",
+        "oil",
+        "spectre_panel",
+        "lir",
+        "DressingSelect",
+        "tsplayground",
+        "",
+    },
+    callback = function()
+        vim.cmd([[
       nnoremap <silent> <buffer> q :close<CR>
       set nobuflisted
     ]])
-  end,
+    end,
 })
 
 vim.api.nvim_create_autocmd({ "CmdWinEnter" }, {
-  callback = function()
-    vim.cmd("quit")
-  end,
+    callback = function()
+        vim.cmd("quit")
+    end,
 })
 
 vim.api.nvim_create_autocmd({ "VimResized" }, {
-  callback = function()
-    vim.cmd("tabdo wincmd =")
-  end,
+    callback = function()
+        vim.cmd("tabdo wincmd =")
+    end,
 })
 
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-  pattern = { "*" },
-  callback = function()
-    vim.cmd("checktime")
-  end,
+    pattern = { "*" },
+    callback = function()
+        vim.cmd("checktime")
+    end,
 })
 
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-  callback = function()
-    vim.highlight.on_yank({ higroup = "Visual", timeout = 40 })
-  end,
+    callback = function()
+        vim.highlight.on_yank({ higroup = "Visual", timeout = 40 })
+    end,
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "gitcommit", "markdown", "NeogitCommitMessage" },
-  callback = function()
-    vim.opt_local.wrap = true
-    vim.opt_local.spell = true
-  end,
+    pattern = { "gitcommit", "markdown", "NeogitCommitMessage" },
+    callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.spell = true
+    end,
 })
 
 vim.api.nvim_create_autocmd({ "CursorHold" }, {
-  callback = function()
-    local status_ok, luasnip = pcall(require, "luasnip")
-    if not status_ok then
-      return
-    end
-    if luasnip.expand_or_jumpable() then
-      -- ask maintainer for option to make this silent
-      luasnip.unlink_current()
-      vim.cmd([[silent! lua require("luasnip").unlink_current()]])
-    end
-  end,
+    callback = function()
+        local status_ok, luasnip = pcall(require, "luasnip")
+        if not status_ok then
+            return
+        end
+        if luasnip.expand_or_jumpable() then
+            -- ask maintainer for option to make this silent
+            luasnip.unlink_current()
+            vim.cmd([[silent! lua require("luasnip").unlink_current()]])
+        end
+    end,
 })

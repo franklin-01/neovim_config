@@ -82,7 +82,7 @@ function M.config()
     close_on_exit = true, -- close the terminal window when the process exits
     shell = "/bin/zsh",
     float_opts = {
-      border = "rounded",
+      border = "double",
       winblend = 0,
       highlights = {
         border = "Normal",
