@@ -47,6 +47,7 @@ function M.config()
                 "--smart-case",
                 "--hidden",
                 "--glob=!.git/",
+                "--ignore-vcs" -- <- ESSENCIAL para respeitar o .gitignore
             },
 
             mappings = {

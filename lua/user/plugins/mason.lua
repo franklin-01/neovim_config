@@ -10,7 +10,7 @@ function M.config()
     "pyright",
     "lua_ls",
     "bashls",
-    "ts_ls",
+    "vtsls",
     "biome",
     "html",
     "cssls",

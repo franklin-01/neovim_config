@@ -36,10 +36,10 @@ function M.config()
 	end)
 
 	-- Toggle previous & next buffers stored within Harpoon list
-	vim.keymap.set("n", "<C-S-H>", function()
+	vim.keymap.set("n", "<C-M-H>", function()
 		harpoon:list():prev()
 	end)
-	vim.keymap.set("n", "<C-S-L>", function()
+	vim.keymap.set("n", "<C-M-L>", function()
 		harpoon:list():next()
 	end)
 end

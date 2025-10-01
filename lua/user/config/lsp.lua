@@ -185,21 +185,11 @@ function M.config()
         end
     end
 
-    -- manual config
-    -- lspconfig.ts_ls.setup({
-    --     on_attach = function(client, bufnr)
-    --         lsp_keymaps(bufnr)
-    --         -- disable formatter
-    --         client.server_capabilities.documentFormattingProvider = false
-    --     end,
-    --     capabilities = M.common_capabilities(),
-    -- })
-
     lspconfig.vtsls.setup({
         -- Anexa capabilities e on_attach se estiver usando nvim-cmp ou keymaps
         -- capabilities = ...,
         -- on_attach = ...,
-        on_attach = function(client, bufnr)
+        on_attach = function(_, bufnr)
             lsp_keymaps(bufnr)
             -- disable formatter
             -- client.server_capabilities.documentFormattingProvider = false
