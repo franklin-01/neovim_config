@@ -46,6 +46,7 @@ vim.opt.fillchars:append({
 vim.opt.shortmess:append("c")
 
 vim.opt.iskeyword:remove("_")
+vim.opt.iskeyword:remove("-")
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])

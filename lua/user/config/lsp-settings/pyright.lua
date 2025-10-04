@@ -45,13 +45,17 @@ return {
     settings = {
         python = {
             analysis = {
-                autoSearchPaths = true,
-                useLibraryCodeForTypes = true,
-                diagnosticMode = "openFilesOnly",
+                typeCheckingMode = "basic",             -- Ou "strict" para verificações mais rigorosas
+                diagnosticMode = "workspace",           -- Ou "openFilesOnly" para analisar apenas arquivos abertos
+                useLibraryCodeForTypes = true,          -- Habilita o uso de código de biblioteca para inferência de tipos
+                autoImportCompletions = true,           -- Habilita sugestões automáticas de importação
+                autoSearchPaths = true,                 -- Habilita a busca automática por caminhos de importação
+                diagnosticSeverityOverrides = {
+                    reportMissingImports = "warning",   -- Altera a severidade para "warning"
+                    reportUnusedImport = "information", -- Altera a severidade para "information"
+                },
             },
-            venvPath = vim.loop.cwd(),
-            venv = "venv",
-            pythonPath = vim.loop.cwd() .. "/venv/bin/python",
+            pythonPath = vim.fn.getcwd() .. "/venv/bin/python",
         },
     },
     commands = {
