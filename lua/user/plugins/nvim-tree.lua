@@ -51,7 +51,7 @@ function M.config()
         sync_root_with_cwd = true,
         view = {
             number = false,
-            side = "left",
+            side = "right",
             width = 30,
             float = {
                 enable = true,

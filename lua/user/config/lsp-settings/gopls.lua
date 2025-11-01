@@ -34,21 +34,10 @@ return {
             semanticTokens = true,
         },
     },
-    on_attach = function(client, bufnr)
-        if not client.server_capabilities.semanticTokensProvider then
-            local semantic = client.config.capabilities.textDocument.semanticTokens
-            client.server_capabilities.semanticTokensProvider = {
-                full = true,
-                legend = {
-                    tokenTypes = semantic.tokenTypes,
-                    tokenModifiers = semantic.tokenModifiers,
-                },
-                range = true,
-            }
-        end
+    on_attach = function(_, bufnr)
         -- Configure o espaçamento de tabulação
-        vim.bo[bufnr].tabstop = 4           -- Define o número de espaços para uma tabulação
-        vim.bo[bufnr].shiftwidth = 4        -- Define o número de espaços para indentação
-        vim.bo[bufnr].expandtab = false     -- Use tabs reais (em vez de espaços)
+        vim.bo[bufnr].tabstop = 4                                                        -- Define o número de espaços para uma tabulação
+        vim.bo[bufnr].shiftwidth = 4                                                     -- Define o número de espaços para indentação
+        vim.bo[bufnr].expandtab = false                                                  -- Use tabs reais (em vez de espaços)
     end,
 }
