@@ -51,10 +51,10 @@ function M.config()
         sync_root_with_cwd = true,
         view = {
             number = false,
-            side = "left",
-            width = 30,
+            side = "right",
+            width = 40,
             float = {
-                enable = true,
+                enable = false,
                 quit_on_focus_loss = true,
                 open_win_config = function()
                     local width = vim.o.columns

@@ -1,5 +1,5 @@
 --better vscode theme
-local M = {}
+-- local M = {}
 
 local M = {
     "Mofiqul/vscode.nvim",
@@ -25,7 +25,7 @@ local M = {
         },
     },
 }
--- --
+
 function M.config()
     vim.g.background = "dark"
     vim.cmd("colorscheme vscode")
@@ -60,7 +60,7 @@ end
 --     lazy = false,
 --     priority = 1000, -- Load it before all the other start plugins.
 -- }
---
+-- --
 -- function M.config() vim.cmd("colorscheme moonfly") end
 
 -- local M = {
