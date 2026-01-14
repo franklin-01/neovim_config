@@ -24,10 +24,11 @@ function M.config()
         local opts = {}
 
         if require_ok then
-            -- opts = vim.tbl_deep_extend("force", settings, opts)
+            opts = vim.tbl_deep_extend("force", settings, opts)
         end
 
         vim.lsp.config(server, opts)
+        vim.lsp.enable(server)
     end
 end
 

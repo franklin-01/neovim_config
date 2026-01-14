@@ -52,9 +52,9 @@ function M.config()
         view = {
             number = false,
             side = "right",
-            width = 40,
+            width = 30,
             float = {
-                enable = false,
+                enable = true,
                 quit_on_focus_loss = true,
                 open_win_config = function()
                     local width = vim.o.columns

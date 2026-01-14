@@ -8,6 +8,7 @@ M.list = {
     "vtsls",
     "biome",
     "cssls",
+    "perlpls",
     "gopls",
     "html",
     "lua_ls",
