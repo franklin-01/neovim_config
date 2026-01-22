@@ -9,6 +9,7 @@ spec("user.config.colorscheme")
 -- lsp config
 spec("user.config.lsp")
 -- spec("user.plugins.rustoceanvim")
+spec("user.plugins.nvim-java")
 
 -- plugins
 spec("user.plugins.dev-icons")

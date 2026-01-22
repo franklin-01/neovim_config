@@ -8,23 +8,14 @@ function M.config()
 	require("nvim-treesitter.configs").setup({
 		ensure_installed = {
 			"lua",
-			-- "markdown",
-			-- "markdown_inline",
 			"bash",
-			-- "python",
-			-- "javascript",
-			-- "typescript",
-			-- "tsx",
 			"go",
-			-- "rust",
 			"c",
-			-- "php",
 			"sql",
 			"yaml",
 			"json",
 			"html",
 			"css",
-			-- "asm",
 		},
 		highlight = {
 			enable = true,
