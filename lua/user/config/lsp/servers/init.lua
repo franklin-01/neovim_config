@@ -4,6 +4,7 @@ local M = {
 }
 
 M.list = {
+    "jdtls",
     "bashls",
     "vtsls",
     "biome",
