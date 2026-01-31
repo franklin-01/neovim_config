@@ -8,7 +8,7 @@ return {
                 runtimes = {
                     {
                         name = "JavaSE-25",
-                        path = "~/.local/java/jdk-17",
+                        path = "~/.local/java/jdk/Contents/Home",
                         default = false,
                     }
                 }

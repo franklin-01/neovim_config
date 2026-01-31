@@ -7,9 +7,9 @@ require("user.config.plugin-stack")
 spec("user.config.colorscheme")
 
 -- lsp config
-spec("user.config.lsp")
-spec("user.plugins.rustoceanvim")
 spec("user.plugins.nvim-java")
+spec("user.config.lsp")
+-- spec("user.plugins.rustoceanvim")
 
 -- plugins
 spec("user.plugins.dev-icons")

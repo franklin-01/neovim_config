@@ -4,7 +4,7 @@ local M = {
 }
 
 M.list = {
-    "jdtls",
+    -- "jdtls",
     "bashls",
     "vtsls",
     "biome",
@@ -19,7 +19,6 @@ M.list = {
     "sqls",
     "dockerls",
     "docker_compose_language_service",
-    "rnix",
     "yamlls",
     "jsonls",
     "intelephense",

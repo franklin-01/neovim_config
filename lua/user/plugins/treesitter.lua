@@ -1,30 +1,27 @@
 local M = {
 	"nvim-treesitter/nvim-treesitter",
-	event = { "BufReadPost", "BufNewFile" },
 	build = ":TSUpdate",
+    lazy = false
 }
 
 function M.config()
-	require("nvim-treesitter.configs").setup({
+	require("nvim-treesitter").setup({
 		ensure_installed = {
 			"lua",
-			-- "markdown",
-			-- "markdown_inline",
 			"bash",
-			-- "python",
-			-- "javascript",
-			-- "typescript",
-			-- "tsx",
+			"python",
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
+			"tsx",
 			"go",
-			-- "rust",
 			"c",
-			-- "php",
 			"sql",
 			"yaml",
 			"json",
 			"html",
 			"css",
-			-- "asm",
 		},
 		highlight = {
 			enable = true,
@@ -32,9 +29,7 @@ function M.config()
 		},
 		indent = { enable = false },
 		auto_install = true,
-		sync_install = true,
-		ignore_install = {},
-		modules = {},
+		sync_install = false,
 	})
 end
 

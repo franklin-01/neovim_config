@@ -1,24 +1,48 @@
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function(data)
-    -- Check if the startup argument is a directory
-    local is_dir = vim.fn.isdirectory(data.file) == 1
-    if not is_dir then return end
-
-    -- Change to the directory
-    vim.cmd.cd(data.file)
-
-    -- Open NvimTree
-    require("nvim-tree.api").tree.open()
-
-    -- Close the first listed buffer if it exists
-    local bufs = vim.api.nvim_list_bufs()
-    for _, buf in ipairs(bufs) do
-      if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buflisted then
-        vim.api.nvim_buf_delete(buf, { force = true })
-        break
-      end
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = {
+        "lua",
+        "bash",
+        "python",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "tsx",
+        "go",
+        "c",
+        "sql",
+        "yaml",
+        "json",
+        "html",
+        "css",
+    },
+    callback = function(args)
+        vim.treesitter.start(args.buf, vim.treesitter.language.get_lang(vim.bo.filetype))
+        vim.bo[args.buf].syntax = 'on'     -- only if additional legacy syntax is needed
     end
-  end,
+})
+
+vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function(data)
+        -- Check if the startup argument is a directory
+        local is_dir = vim.fn.isdirectory(data.file) == 1
+        if not is_dir then return end
+
+        -- Change to the directory
+        vim.cmd.cd(data.file)
+
+        -- Open NvimTree
+        require("nvim-tree.api").tree.open()
+
+        -- Close the first listed buffer if it exists
+        local bufs = vim.api.nvim_list_bufs()
+        for _, buf in ipairs(bufs) do
+            if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buflisted then
+                vim.api.nvim_buf_delete(buf, { force = true })
+                break
+            end
+        end
+    end,
 })
 
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
