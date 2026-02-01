@@ -40,7 +40,7 @@ vim.opt.title = false
 -- colorcolumn = "120",
 vim.opt.fillchars = vim.opt.fillchars + "eob: "
 vim.opt.fillchars:append({
-  stl = " ",
+    stl = " ",
 })
 
 vim.opt.shortmess:append("c")
@@ -53,3 +53,6 @@ vim.cmd([[set iskeyword+=-]])
 
 vim.g.netrw_banner = 0
 vim.g.netrw_mouse = 2
+
+-- vim.env.JAVA_HOME = vim.env.HOME .. "/.local/java/jdk-21/Contents/Home"
+-- vim.env.PATH = vim.env.JAVA_HOME .. "/bin:" .. vim.env.PATH

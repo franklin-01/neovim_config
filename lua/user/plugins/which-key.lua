@@ -23,6 +23,7 @@ function M.config()
         { "<leader>f",  group = "Find" },
         { "<leader>G",  group = "Git" },
         { "<leader>g",  group = "Go to" },
+        { "<leader>r",  group = "Run" },
         { "<leader>h",  "<cmd>nohlsearch<CR>", desc = "NOHL" },
         { "<leader>l",  group = "LSP" },
         { "<leader>p",  group = "Plugins" },
@@ -74,6 +75,9 @@ function M.config()
             filetypes = { "TelescopePrompt" },
         },
     })
+
+    local runner = require("user.plugins.run-map")
+    runner.config()
 end
 
 return M
