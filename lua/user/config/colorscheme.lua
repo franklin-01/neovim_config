@@ -1,7 +1,7 @@
 --better vscode theme
 
 -- local M = {
---     "Mofiqul/vscode.nvim",
+--     "franklin-01/deep-vscode.nvim",
 --     priority = 1000,
 --     opts = {
 --         --          Enable italic comment
@@ -24,20 +24,29 @@
 --         -- },
 --     },
 -- }
--- --
+--
 -- function M.config()
 --     vim.g.background = "dark"
 --     vim.cmd("colorscheme vscode")
 -- end
 
 local M = {
-    "folke/tokyonight.nvim",
-    priority = 1000,
+    "savq/melange-nvim",
+    priority = 1000
 }
 
 function M.config()
-	vim.cmd.colorscheme("tokyonight-night")
+    vim.cmd("colorscheme melange")
 end
+
+-- local M = {
+--     "folke/tokyonight.nvim",
+--     priority = 1000,
+-- }
+--
+-- function M.config()
+-- 	vim.cmd.colorscheme("tokyonight-night")
+-- end
 
 -- local M = {
 --     "catppuccin/nvim",

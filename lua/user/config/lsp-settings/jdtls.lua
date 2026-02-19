@@ -7,8 +7,8 @@ return {
             configuration = {
                 runtimes = {
                     {
-                        name = "JavaSE-25",
-                        path = "~/.local/java/jdk/Contents/Home",
+                        name = "JavaSE-21",
+                        path = "~/.local/java/jdk",
                         default = false,
                     }
                 }

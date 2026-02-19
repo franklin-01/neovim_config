@@ -5,6 +5,7 @@ local M = {
 
 M.list = {
     -- "jdtls",
+    -- "kotlin_lsp",
     "bashls",
     "vtsls",
     "biome",
