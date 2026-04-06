@@ -11,6 +11,9 @@ function M.config()
         { "<leader>rs", "<cmd>TermExec cmd='./gradlew bootRun -q'<cr>", desc = "Kotlin SpringBoot" },
         { "<leader>rg", "<cmd>TermExec cmd='go run main.go'<cr>", desc = "Go" },
         { "<leader>rb", "<cmd>TermExec cmd='bun run dev'<cr>", desc = "Bun" },
+        { "<leader>rf", "", desc = "flutter" },
+        { "<leader>rfa", "<cmd>TermExec cmd='flutter run'<cr>", desc = "flutter app" },
+        { "<leader>rfb", "<cmd>TermExec cmd='flutter run -d chrome'<cr>", desc = "flutter web" },
     })
 end
 

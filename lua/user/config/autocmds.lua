@@ -9,6 +9,7 @@ vim.api.nvim_create_autocmd('FileType', {
         "typescriptreact",
         "java",
         "kotlin",
+        "swift",
         "tsx",
         "go",
         "c",

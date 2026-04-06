@@ -2,6 +2,7 @@ require("user.config.autocmds")
 require("user.config.options")
 require("user.config.keymap")
 require("user.config.plugin-stack")
+require("user.config.neovide")
 
 -- colorscheme
 spec("user.config.colorscheme")
@@ -10,11 +11,13 @@ spec("user.config.colorscheme")
 spec("user.plugins.nvim-java")
 spec("user.config.lsp")
 -- spec("user.plugins.rustoceanvim")
+spec("user.plugins.flutter-tools")
 
 -- plugins
 spec("user.plugins.dev-icons")
 spec("user.plugins.treesitter")
 spec("user.plugins.mason")
+-- spec("user.plugins.transparent")
 --------------------------------
 spec("user.plugins.which-key")
 --------------------------------

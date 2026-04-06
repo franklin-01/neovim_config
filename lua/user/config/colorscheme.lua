@@ -24,20 +24,20 @@
 --         -- },
 --     },
 -- }
---
+
 -- function M.config()
 --     vim.g.background = "dark"
 --     vim.cmd("colorscheme vscode")
 -- end
 
-local M = {
-    "savq/melange-nvim",
-    priority = 1000
-}
+-- local M = {
+--     "savq/melange-nvim",
+--     priority = 1000
+-- }
 
-function M.config()
-    vim.cmd("colorscheme melange")
-end
+-- function M.config()
+--     vim.cmd("colorscheme melange")
+-- end
 
 -- local M = {
 --     "folke/tokyonight.nvim",
@@ -47,11 +47,6 @@ end
 -- function M.config()
 -- 	vim.cmd.colorscheme("tokyonight-night")
 -- end
-
--- local M = {
---     "catppuccin/nvim",
---     priority = 1000, -- Load it before all the other start plugins.
--- }
 
 -- local M = {
 -- 	"sainnhe/gruvbox-material",
@@ -101,33 +96,6 @@ end
 --   vim.cmd.colorscheme('everforest')
 -- end
 
--- function M.config()
---     require("catppuccin").setup({
---         term_colors = true,
---         transparent_background = false,
---         styles = {
---             comments = {},
---             conditionals = {},
---             loops = {},
---             functions = {},
---             keywords = {},
---             strings = {},
---             variables = {},
---             numbers = {},
---             booleans = {},
---             properties = {},
---             types = {},
---         },
---         color_overrides = {
---             mocha = {
---                 base = "#000000",
---                 mantle = "#000000",
---                 crust = "#000000",
---             },
---         },
---     })
---     vim.cmd("colorscheme catppuccin")
--- end
 -- local M = {
 --   "bluz71/vim-nightfly-colors",
 --   name = "nightfly",
@@ -139,4 +107,37 @@ end
 --   vim.cmd("colorscheme nightfly")
 -- end
 --
+local M = {
+    "catppuccin/nvim",
+    priority = 1000, -- Load it before all the other start plugins.
+}
+
+function M.config()
+    require("catppuccin").setup({
+        term_colors = true,
+        transparent_background = false,
+        -- styles = {
+        --     comments = {},
+        --     conditionals = {},
+        --     loops = {},
+        --     functions = {},
+        --     keywords = {},
+        --     strings = {},
+        --     variables = {},
+        --     numbers = {},
+        --     booleans = {},
+        --     properties = {},
+        --     types = {},
+        -- },
+        -- color_overrides = {
+        --     mocha = {
+        --         base = "#000000",
+        --         mantle = "#000000",
+        --         crust = "#000000",
+        --     },
+        -- },
+    })
+    vim.cmd("colorscheme catppuccin-mocha")
+end
+
 return M
