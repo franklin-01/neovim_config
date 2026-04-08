@@ -8,15 +8,16 @@ require("user.config.neovide")
 spec("user.config.colorscheme")
 
 -- lsp config
-spec("user.plugins.nvim-java")
+-- spec("user.plugins.nvim-java")
 spec("user.config.lsp")
 -- spec("user.plugins.rustoceanvim")
-spec("user.plugins.flutter-tools")
+-- spec("user.plugins.flutter-tools")
 
 -- plugins
 spec("user.plugins.dev-icons")
 spec("user.plugins.treesitter")
 spec("user.plugins.mason")
+-- spec("user.plugins.love")
 -- spec("user.plugins.transparent")
 --------------------------------
 spec("user.plugins.which-key")
@@ -47,7 +48,6 @@ spec("user.plugins.blamer")
 spec("user.plugins.tenaille")
 spec("user.plugins.noice")
 spec("user.plugins.numb")
--- spec("user.plugins.love")
 spec("user.plugins.go-debugger")
 spec("user.plugins.gopher")
 -- spec("user.plugins.lsp-lines")
