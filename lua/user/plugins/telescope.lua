@@ -20,7 +20,6 @@ function M.config()
     local icons = require "user.extra.icons"
     local actions = require "telescope.actions"
 
-
     require("telescope").setup {
         defaults = {
             reuse_win = false,

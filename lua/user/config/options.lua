@@ -36,6 +36,7 @@ vim.opt.wrap = false           -- display lines as one long line
 vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 8
 vim.opt.title = false
+vim.opt.hidden = true
 -- colorcolumn = "80",
 -- colorcolumn = "120",
 vim.opt.fillchars = vim.opt.fillchars + "eob: "

@@ -72,8 +72,20 @@
 --     lazy = false,
 --     priority = 1000, -- Load it before all the other start plugins.
 -- }
---
+-- --
 -- function M.config() vim.cmd("colorscheme moonfly") end
+
+local M = {
+    "navarasu/onedark.nvim",
+    priority = 1000, -- make sure to load this before all the other start plugins
+}
+
+function M.config()
+    require('onedark').setup {
+        style = 'warmer'
+    }
+    require('onedark').load()
+end
 
 -- local M = {
 --   'sainnhe/everforest',
@@ -107,37 +119,37 @@
 --   vim.cmd("colorscheme nightfly")
 -- end
 --
-local M = {
-    "catppuccin/nvim",
-    priority = 1000, -- Load it before all the other start plugins.
-}
+-- local M = {
+--     "catppuccin/nvim",
+--     priority = 1000, -- Load it before all the other start plugins.
+-- }
 
-function M.config()
-    require("catppuccin").setup({
-        term_colors = true,
-        transparent_background = false,
-        -- styles = {
-        --     comments = {},
-        --     conditionals = {},
-        --     loops = {},
-        --     functions = {},
-        --     keywords = {},
-        --     strings = {},
-        --     variables = {},
-        --     numbers = {},
-        --     booleans = {},
-        --     properties = {},
-        --     types = {},
-        -- },
-        -- color_overrides = {
-        --     mocha = {
-        --         base = "#000000",
-        --         mantle = "#000000",
-        --         crust = "#000000",
-        --     },
-        -- },
-    })
-    vim.cmd("colorscheme catppuccin-mocha")
-end
+-- function M.config()
+--     require("catppuccin").setup({
+--         term_colors = true,
+--         transparent_background = false,
+--         -- styles = {
+--         --     comments = {},
+--         --     conditionals = {},
+--         --     loops = {},
+--         --     functions = {},
+--         --     keywords = {},
+--         --     strings = {},
+--         --     variables = {},
+--         --     numbers = {},
+--         --     booleans = {},
+--         --     properties = {},
+--         --     types = {},
+--         -- },
+--         -- color_overrides = {
+--         --     mocha = {
+--         --         base = "#000000",
+--         --         mantle = "#000000",
+--         --         crust = "#000000",
+--         --     },
+--         -- },
+--     })
+--     vim.cmd("colorscheme catppuccin-mocha")
+-- end
 
 return M

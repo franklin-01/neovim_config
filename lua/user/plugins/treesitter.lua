@@ -28,8 +28,8 @@ function M.config()
 			additional_vim_regex_highlighting = true,
 		},
 		indent = { enable = false },
-		auto_install = true,
-		sync_install = false,
+		auto_install = false,
+		sync_install = true,
 	})
 end
 

@@ -1,0 +1,55 @@
+local icons = require("user.extra.icons")
+local wk = require("which-key")
+
+return require("base.plugin"):new({
+    name = "gitsigns",
+    src = "https://github.com/lewis6991/gitsigns.nvim",
+    config = function(self)
+        self.setup {
+            signs = {
+                add = {
+                    text = icons.ui.BoldLineMiddle,
+                },
+                change = {
+                    text = icons.ui.BoldLineDashedMiddle,
+                },
+                delete = {
+                    text = icons.ui.TriangleShortArrowRight,
+                },
+                topdelete = {
+                    text = icons.ui.TriangleShortArrowRight,
+                },
+                changedelete = {
+                    text = icons.ui.BoldLineMiddle,
+                },
+            },
+            watch_gitdir = {
+                interval = 1000,
+                follow_files = true,
+            },
+            attach_to_untracked = true,
+            current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
+            update_debounce = 200,
+            max_file_length = 40000,
+            preview_config = {
+                border = "rounded",
+                style = "minimal",
+                relative = "cursor",
+                row = 0,
+                col = 1,
+            },
+        }
+
+        wk.add {
+            { "<leader>GR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>",                          desc = "Reset Buffer" },
+            { "<leader>Gd", "<cmd>vert Gitsigns diffthis HEAD<cr>",                                    desc = "Git Diff" },
+            { "<leader>Gj", "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", desc = "Next Hunk" },
+            { "<leader>Gk", "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", desc = "Prev Hunk" },
+            { "<leader>Gl", "<cmd>lua require 'gitsigns'.blame_line()<cr>",                            desc = "Blame" },
+            { "<leader>Gp", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>",                          desc = "Preview Hunk" },
+            { "<leader>Gr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>",                            desc = "Reset Hunk" },
+            { "<leader>Gs", "<cmd>lua require 'gitsigns'.stage_hunk()<cr>",                            desc = "Stage Hunk" },
+            { "<leader>Gu", "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",                       desc = "Undo Stage Hunk" },
+        }
+    end
+})

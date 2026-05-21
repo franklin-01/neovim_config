@@ -1,9 +1,12 @@
-local M = {
-    "local/module",
-    enabled = false,
-}
+local M = require "base.module"
 
-M.LoadKeyMaps = function()
+--M.maps = function(bufnr)
+--    local opts = { noremap = true, silent = true }
+--    local keymap = vim.api.nvim_buf_set_keymap
+--    keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+--end
+
+function M:load()
     local wk = require("which-key")
     wk.add({
         -- go to
@@ -18,7 +21,7 @@ M.LoadKeyMaps = function()
         { "<leader>lh", "<cmd>lua require('user.config.lsp').toggle_inlay_hints()<cr>", desc = "Hints", },
         { "<leader>li", "<cmd>LspInfo<cr>",                                             desc = "Info" },
         { "<leader>lj", "<cmd>lua vim.diagnostic.jump({count = -1, float = true})<cr>",                      desc = "Next Diagnostic", },
-        { "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>",                      desc = "Prev Diagnostic", },
+        { "<leader>lk", "<cmd>lua vim.diagnostic.jump({count = 1, float = true})<cr>",                      desc = "Prev Diagnostic", },
         { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>",                          desc = "CodeLens Action", },
         { "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<cr>",                     desc = "Quickfix", },
         { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>",                            desc = "Rename", },

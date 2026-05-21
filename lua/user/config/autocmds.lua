@@ -78,11 +78,11 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     end,
 })
 
-vim.api.nvim_create_autocmd({ "CmdWinEnter" }, {
-    callback = function()
-        vim.cmd("quit")
-    end,
-})
+-- vim.api.nvim_create_autocmd({ "WinEnter" }, {
+--     callback = function()
+--         vim.cmd("quit")
+--     end,
+-- })
 
 vim.api.nvim_create_autocmd({ "VimResized" }, {
     callback = function()
@@ -118,7 +118,6 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
             return
         end
         if luasnip.expand_or_jumpable() then
-            -- ask maintainer for option to make this silent
             luasnip.unlink_current()
             vim.cmd([[silent! lua require("luasnip").unlink_current()]])
         end

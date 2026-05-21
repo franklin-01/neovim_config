@@ -1,9 +1,8 @@
-local M = {
-    "nvim-tree/nvim-tree.lua",
-    event = "VeryLazy",
-}
-
-function M.config()
+return require("base.plugin"):new({
+    name = "nvim-tree",
+    src = "https://github.com/nvim-tree/nvim-tree.lua",
+    deps = nil,
+    config = function (self)
     local wk = require("which-key")
     wk.add({
         { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Explorer" },
@@ -45,7 +44,7 @@ function M.config()
 
     local icons = require("user.extra.icons")
 
-    require("nvim-tree").setup({
+    self.setup{
         on_attach = my_on_attach,
         hijack_netrw = true,
         sync_root_with_cwd = true,
@@ -156,7 +155,7 @@ function M.config()
                 error = icons.diagnostics.BoldError,
             },
         },
-    })
-end
-
-return M
+    }
+end,
+    keymaps = nil
+})
