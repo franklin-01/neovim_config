@@ -19,6 +19,8 @@ function M:load()
     require("v2.plugin.plugins.treesitter")
     require("v2.plugin.plugins.auto-tag")
     require("v2.plugin.plugins.fidget")
+    require("v2.plugin.plugins.mason")
+    require("v2.plugin.plugins.blink")
     ------------------------------------------------------
     require("v2.plugin.plugins.gopher")
     require("v2.plugin.plugins.go-debugger")

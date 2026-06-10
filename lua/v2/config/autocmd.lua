@@ -124,16 +124,6 @@ function M:load()
             end
         end,
     })
-
-    vim.api.nvim_create_autocmd('LspAttach', {
-        callback = function(args)
-            vim.lsp.document_color.enable(true, { bufnr = args.buf })
-            local client = vim.lsp.get_client_by_id(args.data.client_id)
-            if client ~= nil then
-                vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
-            end
-        end,
-    })
 end
 
 return M

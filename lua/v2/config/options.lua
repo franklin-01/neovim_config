@@ -26,7 +26,6 @@ function M:load()
     vim.opt.termguicolors = true      -- set term gui colors (most terminals support this)
     vim.opt.timeoutlen = 500          -- time to wait for a mapped sequence to complete (in milliseconds)
     vim.opt.undofile = true           -- enable persistent undo
-    vim.opt.updatetime = 100          -- faster completion (4000ms default)
     vim.opt.writebackup = false       -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
     vim.opt.expandtab = true          -- convert tabs to spaces
     vim.opt.shiftwidth = 4            -- the number of spaces inserted for each indentation
@@ -44,8 +43,6 @@ function M:load()
     vim.opt.sidescrolloff = 8
     vim.opt.title = false
     vim.opt.hidden = true
-    -- colorcolumn = "80",
-    -- colorcolumn = "120",
     vim.opt.fillchars = vim.opt.fillchars + "eob: "
     vim.opt.fillchars:append({
         stl = " ",
@@ -61,25 +58,6 @@ function M:load()
 
     vim.g.netrw_banner = 0
     vim.g.netrw_mouse = 2
-
-    vim.o.autocomplete = true
-    vim.o.complete = '.,w,b,o'
-    -- vim.o.completeopt = 'menuone,noselect,fuzzy'
-    vim.opt.completeopt = {
-        "menu",
-        "menuone",
-        "noinsert",
-        "popup",
-    }
-    vim.opt.pumheight = 6
-    vim.opt.pumwidth = 20
-    vim.o.winborder = "rounded"
-    vim.api.nvim_create_autocmd("CursorHoldI", {
-        callback = function()
-            vim.lsp.buf.signature_help()
-        end,
-    })
-    vim.opt.updatetime = 150
 end
 
 return M

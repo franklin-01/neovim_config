@@ -1,18 +1,16 @@
 local M = require "base.module"
+
 function M:load()
     require("v2.config.lsp.keymaps"):load()
-    vim.pack.add {
-        { src = 'https://github.com/neovim/nvim-lspconfig' },
-        { src = 'https://github.com/mason-org/mason.nvim' },
-        { src = 'https://github.com/mason-org/mason-lspconfig.nvim' },
-    }
-    require('mason').setup({
-        automatic_enable = {
-            exclude = { "dart" }
-        }
-    })
-    require('mason-lspconfig').setup()
-    vim.lsp.automatic_servers_installation = false
+    require("v2.config.lsp.diagnostic"):load()
+    local servers = require("v2.config.lsp.servers")
+
+    for _, server in pairs(servers.list) do
+        local require_ok, settings = pcall(require, "v2.config.lsp.servers." .. server)
+        if require_ok then
+            vim.lsp.config(server, settings)
+        end
+    end
 end
 
 return M
