@@ -7,7 +7,8 @@ return require("base.plugin"):new({
     config = function(self)
         self.build():pwait()
         self.setup({
-            completion = { documentation = { auto_show = true } }
+            completion = { documentation = { auto_show = true } },
+            signature = { enabled = true }
         })
     end
 })
