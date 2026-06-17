@@ -5,6 +5,7 @@
 ---@field deps? table table with plugin dependencies
 ---@field disable? boolean disable or enable plugin
 ---@field config? table|function plugin config table or config function
+---@field customConfig? function plugin config table or config function
 ---@field keymaps? table table with plugin keymap
 ---@field priority? number plugin priority
 
@@ -32,12 +33,16 @@ function M:new(spec)
         }
     }, { confirm = false })
 
-    local plugin = require(spec.name)
-    if spec.config ~= nil then
-        if type(spec.config) == 'table' then
-            plugin.setup(spec.config)
-        else
-            spec.config(plugin)
+    if not (spec.customConfig == nil) then
+        spec.customConfig()
+    else
+        local plugin = require(spec.name)
+        if spec.config ~= nil and not (plugin == nil) then
+            if type(spec.config) == 'table' then
+                plugin.setup(spec.config)
+            else
+                spec.config(plugin)
+            end
         end
     end
 

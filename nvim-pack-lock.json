@@ -40,6 +40,10 @@
       "rev": "27ba078f14dd39fcd5e8a57d7009cdd77450ebbb",
       "src": "https://github.com/olexsmir/gopher.nvim"
     },
+    "gruvbox-material": {
+      "rev": "11d779b26a9ab2b3db8c22c6ac9fb6e8ed4fea79",
+      "src": "https://github.com/sainnhe/gruvbox-material"
+    },
     "hardline": {
       "rev": "9b85ebfba065091715676fb440c16a37c465b9a5",
       "src": "https://github.com/ojroques/nvim-hardline"

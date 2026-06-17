@@ -18,7 +18,7 @@ function M:load()
         { "<leader>gl", "<cmd>lua vim.diagnostic.open_float()<cr>",                     desc = "Show Diagnostic", },
         -- other lsp stuff
         { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>",                       desc = "Code Action", },
-        { "<leader>lh", "<cmd>lua require('user.config.lsp').toggle_inlay_hints()<cr>", desc = "Hints", },
+        { "<leader>lh", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<cr>", desc = "Hints", },
         { "<leader>li", "<cmd>LspInfo<cr>",                                             desc = "Info" },
         { "<leader>lj", "<cmd>lua vim.diagnostic.jump({count = -1, float = true})<cr>",                      desc = "Next Diagnostic", },
         { "<leader>lk", "<cmd>lua vim.diagnostic.jump({count = 1, float = true})<cr>",                      desc = "Prev Diagnostic", },

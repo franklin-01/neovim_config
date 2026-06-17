@@ -81,7 +81,7 @@ return require("base.plugin"):new({
             close_on_exit = true, -- close the terminal window when the process exits
             shell = "/bin/zsh",
             float_opts = {
-                border = "double",
+                border = "rounded",
                 winblend = 0,
                 highlights = {
                     border = "Normal",

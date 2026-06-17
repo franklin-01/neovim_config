@@ -5,7 +5,7 @@ local function requireScheme(scheme)
 end
 
 function M:load()
-    requireScheme("onedark")
+    requireScheme("gruvbox-material")
 end
 
 return M

@@ -58,6 +58,7 @@ function M:load()
 
     vim.g.netrw_banner = 0
     vim.g.netrw_mouse = 2
+    vim.o.winborder = "rounded"
 end
 
 return M
