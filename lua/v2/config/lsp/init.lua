@@ -9,6 +9,7 @@ function M:load()
         local require_ok, settings = pcall(require, "v2.config.lsp.servers." .. server)
         if require_ok then
             vim.lsp.config(server, settings)
+            vim.lsp.enable(server)
         end
     end
 end

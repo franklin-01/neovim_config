@@ -160,6 +160,10 @@
       "rev": "a798325b7f36acc62741d1029930a7b96d4dd4bf",
       "src": "https://github.com/HiPhish/rainbow-delimiters.nvim"
     },
+    "rustaceanvim": {
+      "rev": "a22902f216b068faa311807c9f361c6b1d971367",
+      "src": "https://github.com/mrcjkb/rustaceanvim"
+    },
     "schemastore": {
       "rev": "59b4296a733a5b93ce2aee23ee406b6d279183cc",
       "src": "https://github.com/b0o/schemastore.nvim"

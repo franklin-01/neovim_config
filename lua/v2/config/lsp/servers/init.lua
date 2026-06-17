@@ -18,6 +18,7 @@ M.list = {
     "docker_compose_language_service",
     "yamlls",
     "jsonls",
+    "rust_analyzer",
 }
 
 return M

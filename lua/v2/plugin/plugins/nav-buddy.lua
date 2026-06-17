@@ -1,5 +1,5 @@
 local wk = require("which-key")
-local icons = require("user.extra.icons")
+local icons = require("v2.extra.icons")
 
 return require("base.plugin"):new({
     name = "nvim-navbuddy",

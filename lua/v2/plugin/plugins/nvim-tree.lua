@@ -42,7 +42,7 @@ return require("base.plugin"):new({
         )
     end
 
-    local icons = require("user.extra.icons")
+    local icons = require("v2.extra.icons")
 
     self.setup{
         on_attach = my_on_attach,

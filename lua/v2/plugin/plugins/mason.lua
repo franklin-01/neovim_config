@@ -9,7 +9,7 @@ return require("base.plugin"):new({
     config = function(self)
         self.setup({
             automatic_enable = {
-                exclude = { "dart" }
+                exclude = { "dart", "rust_analyzer" }
             },
             ui = {
                 border = "rounded",

@@ -1,4 +1,4 @@
-local icons = require("user.extra.icons")
+local icons = require("v2.extra.icons")
 local wk = require("which-key")
 
 return require("base.plugin"):new({

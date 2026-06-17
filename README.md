@@ -1,11 +1,17 @@
 # neovim_config
 
 ### dependencies:
-- neovim@^0.11
+- neovim@^0.12
 - nodejs@^16.16
 - npm@^7.10
 - python@^3.7
 - zsh@^4.0
+### not required
+- rust_analyzer
+- dart
+- flutter
+- go
+- gopls
 
 ### How to install
 - install all dependencies packages above
@@ -21,9 +27,9 @@ if you are not using zsh, the internal shell can be changed in:
 $HOME/.config/nvim/lua/user/plugins/toggle-term.lua:83
 ```
 
-there are extra plugins for java, rust and (dart/flutter), it can be activated by theirs respective lines in:
+there are extra plugins for go, java, rust and (dart/flutter), it can be activated by theirs respective lines in:
 ```sh
-$HOME/.config/nvim/init.lua
+$HOME/.config/nvim/lua/v2/plugin/init.lua
 ```
 
 to use golang debug install dvl:
