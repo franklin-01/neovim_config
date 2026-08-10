@@ -5,7 +5,8 @@ local function requireScheme(scheme)
 end
 
 function M:load()
-    requireScheme("gruvbox-material")
+    -- requireScheme("gruvbox-material")
+    vim.cmd("colorscheme claude-dark")
 end
 
 return M

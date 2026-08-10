@@ -1,16 +1,16 @@
 ---@module 'base.plugin'
 ---@class Plugin
----@field name string plugin name, used to import plugin setup
----@field src string plugin repository url
----@field deps? table table with plugin dependencies
----@field disable? boolean disable or enable plugin
----@field config? table|function plugin config table or config function
----@field customConfig? function plugin config table or config function
----@field keymaps? table table with plugin keymap
----@field priority? number plugin priority
+---@field name string Module name used to `require()` the plugin and, when `config` is a table, to call its `setup()` function.
+---@field src string Git URL or `vim.pack` source identifier the plugin is installed from.
+---@field deps? table[] List of `vim.pack` plugin specs installed as dependencies before this plugin.
+---@field disable? boolean When `true`, skips installing and configuring this plugin entirely.
+---@field config? table|fun(plugin: table) Setup configuration: a table passed to the plugin's `setup()`, or a function invoked with the required plugin module for manual configuration. Ignored if `customConfig` is set.
+---@field customConfig? fun() Escape hatch for plugins that don't follow the `require(name).setup(config)` convention. When set, this runs instead of `config` and is responsible for requiring/configuring the plugin itself.
+---@field keymaps? {mode: string|string[], keys: string, cmd: string|function}[] Keymaps registered via `vim.keymap.set` after the plugin is configured.
+---@field priority? number Load priority forwarded to `vim.pack.add`; higher values load earlier.
 
 local M = require('base.module')
----new
+---Installs a plugin via `vim.pack`, runs its configuration, and registers its keymaps.
 ---@param spec Plugin
 function M:new(spec)
     assert(type(spec) == 'table', 'Invalid plugin config: ' .. type(spec) .. ' expected: table')

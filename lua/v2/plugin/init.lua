@@ -25,8 +25,11 @@ function M:load()
     require("v2.plugin.plugins.gopher")
     require("v2.plugin.plugins.go-debugger")
     ------------------------------------------------------
-    -- require("v2.plugin.plugins.flutter-tools")
+    require("v2.plugin.plugins.flutter-tools")
+    ------------------------------------------------------
     -- require("v2.plugin.plugins.rustaceanvim")
+    ------------------------------------------------------
+    require("v2.plugin.plugins.claudecode")
 end
 
 return M

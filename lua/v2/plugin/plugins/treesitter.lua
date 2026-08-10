@@ -19,13 +19,15 @@ return require("base.plugin"):new({
                 "json",
                 "html",
                 "css",
+                "html",
+                "gotmpl",
             },
             highlight = {
                 enable = true,
                 additional_vim_regex_highlighting = true,
             },
             indent = { enable = false },
-            auto_install = false,
+            auto_install = true,
             sync_install = true,
         }
     end
