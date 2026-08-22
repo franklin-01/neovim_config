@@ -39,7 +39,8 @@ function M:load()
     vim.opt.numberwidth = 4        -- set number column width to 2 {default 4}
     vim.opt.signcolumn = "yes"     -- always show the sign column, otherwise it would shift the text each time
     vim.opt.wrap = false           -- display lines as one long line
-    vim.opt.scrolloff = 10
+    vim.opt.scrolloff = 3      -- no margin at the top: the cursor may reach the first screen row
+    vim.g.bottom_scrolloff = 10 -- ...but keep 6 lines below the cursor (enforced in config/autocmd.lua)
     vim.opt.sidescrolloff = 8
     vim.opt.title = false
     vim.opt.hidden = true
@@ -59,6 +60,15 @@ function M:load()
     vim.g.netrw_banner = 0
     vim.g.netrw_mouse = 2
     vim.o.winborder = "rounded"
+
+    -- Semantic tokens do LSP desenham por cima do treesitter: por padrao
+    -- semantic_tokens = 125 vs treesitter = 100. Isso apaga capturas mais
+    -- especificas que vem das queries, como o @type.argument/@type.nullable
+    -- de after/queries/dart/highlights.scm -- o dartls manda `String` como
+    -- token `class` e o argumento generico voltava pra cor de tipo. Abaixo de
+    -- 100 o treesitter vence; os semantic tokens seguem valendo onde o
+    -- treesitter nao tem captura.
+    vim.hl.priorities.semantic_tokens = 95
 end
 
 return M

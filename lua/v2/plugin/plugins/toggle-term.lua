@@ -68,7 +68,7 @@ return require("base.plugin"):new({
     src = "https://github.com/akinsho/toggleterm.nvim",
     config = function(self)
         self.setup {
-            size = 20,
+            size = 10,
             open_mapping = [[<c-space>]],
             hide_numbers = true, -- hide the number column in toggleterm buffers
             shade_filetypes = {},
@@ -102,16 +102,16 @@ return require("base.plugin"):new({
             augroup end
         ]])
 
-        vim.api.nvim_create_autocmd({ "TermEnter" }, {
-            pattern = { "*" },
-            callback = function()
-                vim.cmd("startinsert")
-                local opts = { noremap = true, silent = true }
-                vim.api.nvim_buf_set_keymap(0, "t", "<m-h>", [[<C-\><C-n><C-W>h]], opts)
-                vim.api.nvim_buf_set_keymap(0, "t", "<m-j>", [[<C-\><C-n><C-W>j]], opts)
-                vim.api.nvim_buf_set_keymap(0, "t", "<m-k>", [[<C-\><C-n><C-W>k]], opts)
-                vim.api.nvim_buf_set_keymap(0, "t", "<m-l>", [[<C-\><C-n><C-W>l]], opts)
-            end,
-        })
+        -- vim.api.nvim_create_autocmd({ "TermEnter" }, {
+        --     pattern = { "*" },
+        --     callback = function()
+        --         vim.cmd("startinsert")
+        --         local opts = { noremap = true, silent = true }
+        --         vim.api.nvim_buf_set_keymap(0, "t", "<m-h>", [[<C-\><C-n><C-W>h]], opts)
+        --         vim.api.nvim_buf_set_keymap(0, "t", "<m-j>", [[<C-\><C-n><C-W>j]], opts)
+        --         vim.api.nvim_buf_set_keymap(0, "t", "<m-k>", [[<C-\><C-n><C-W>k]], opts)
+        --         vim.api.nvim_buf_set_keymap(0, "t", "<m-l>", [[<C-\><C-n><C-W>l]], opts)
+        --     end,
+        -- })
     end
 })

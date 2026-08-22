@@ -6,7 +6,7 @@ end
 
 function M:load()
     -- requireScheme("gruvbox-material")
-    vim.cmd("colorscheme claude-dark")
+    vim.cmd("colorscheme dartpad")
 end
 
 return M

@@ -1,29 +1,15 @@
 local M = require "base.module"
 function M:load()
-    vim.api.nvim_create_autocmd('FileType', {
-        pattern = {
-            "lua",
-            "bash",
-            "python",
-            "javascript",
-            "javascriptreact",
-            "typescript",
-            "typescriptreact",
-            "java",
-            "kotlin",
-            "swift",
-            "tsx",
-            "go",
-            "c",
-            "sql",
-            "yaml",
-            "json",
-            "html",
-            "css",
-        },
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = require("v2.languages"),
         callback = function(args)
-            vim.treesitter.start(args.buf, vim.treesitter.language.get_lang(vim.bo.filetype))
-            vim.bo[args.buf].syntax = 'on' -- only if additional legacy syntax is needed
+            -- sem lang explicito: vim.treesitter.start deduz pelo filetype do
+            -- proprio args.buf. O codigo antigo passava vim.bo.filetype, que e
+            -- o do buffer ATUAL -- nem sempre o mesmo de args.buf.
+            -- pcall porque o parser pode ainda estar instalando no primeiro
+            -- startup depois de adicionar uma linguagem em v2.languages.
+            pcall(vim.treesitter.start, args.buf)
+            vim.bo[args.buf].syntax = "on" -- only if additional legacy syntax is needed
         end
     })
     vim.api.nvim_create_autocmd("VimEnter", {
@@ -109,6 +95,26 @@ function M:load()
         callback = function()
             vim.opt_local.wrap = true
             vim.opt_local.spell = true
+        end,
+    })
+
+    -- keep 'scrolloff' lines below the cursor at the end of the buffer too, where
+    -- neovim would otherwise let the cursor walk down to the last screen row
+    local ctrl_e = vim.api.nvim_replace_termcodes("<C-e>", true, false, true)
+    vim.api.nvim_create_autocmd({ "CursorMoved", "WinScrolled" }, {
+        callback = function()
+            if vim.fn.win_gettype() ~= "" or vim.bo.buftype ~= "" then
+                return
+            end
+            local off = vim.g.bottom_scrolloff or 0
+            local height = vim.api.nvim_win_get_height(0)
+            if off <= 0 or height < off * 2 then
+                return -- window too short to reserve the margin without pinning the cursor
+            end
+            local below = height - vim.fn.winline()
+            if below < off then
+                vim.cmd("normal! " .. (off - below) .. ctrl_e)
+            end
         end,
     })
 
