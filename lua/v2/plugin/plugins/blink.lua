@@ -8,11 +8,11 @@ return require("base.plugin"):new({
         self.build():pwait()
         self.setup({
             completion = {
-                documentation = { auto_show = true },
+                documentation = { auto_show = false },
                 list = {
                     selection = {
                         preselect = false,
-                        auto_insert = true,
+                        auto_insert = false,
                     },
                 },
             },

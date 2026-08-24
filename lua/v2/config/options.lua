@@ -39,8 +39,8 @@ function M:load()
     vim.opt.numberwidth = 4        -- set number column width to 2 {default 4}
     vim.opt.signcolumn = "yes"     -- always show the sign column, otherwise it would shift the text each time
     vim.opt.wrap = false           -- display lines as one long line
-    vim.opt.scrolloff = 3      -- no margin at the top: the cursor may reach the first screen row
-    vim.g.bottom_scrolloff = 10 -- ...but keep 6 lines below the cursor (enforced in config/autocmd.lua)
+    vim.opt.scrolloff = 3       -- lines kept above the cursor (0 = it may reach the first screen row)
+    vim.g.bottom_scrolloff = 10 -- lines kept below the cursor, enforced in config/autocmd.lua
     vim.opt.sidescrolloff = 8
     vim.opt.title = false
     vim.opt.hidden = true

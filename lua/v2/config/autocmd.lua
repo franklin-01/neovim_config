@@ -98,10 +98,11 @@ function M:load()
         end,
     })
 
-    -- keep 'scrolloff' lines below the cursor at the end of the buffer too, where
-    -- neovim would otherwise let the cursor walk down to the last screen row
-    local ctrl_e = vim.api.nvim_replace_termcodes("<C-e>", true, false, true)
-    vim.api.nvim_create_autocmd({ "CursorMoved", "WinScrolled" }, {
+    -- keep 'bottom_scrolloff' lines below the cursor at the end of the buffer too, where
+    -- neovim would otherwise let the cursor walk down to the last screen row.
+    -- scrolls via winrestview instead of :normal! <C-e>: these events also fire in insert
+    -- mode, and :normal! there ends the insert like <Esc> and shifts the cursor a column left
+    vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI", "WinScrolled" }, {
         callback = function()
             if vim.fn.win_gettype() ~= "" or vim.bo.buftype ~= "" then
                 return
@@ -113,7 +114,9 @@ function M:load()
             end
             local below = height - vim.fn.winline()
             if below < off then
-                vim.cmd("normal! " .. (off - below) .. ctrl_e)
+                local view = vim.fn.winsaveview()
+                view.topline = view.topline + (off - below)
+                vim.fn.winrestview(view)
             end
         end,
     })
